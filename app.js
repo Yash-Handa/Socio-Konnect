@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helmet = require('helmet');
+var compression = require('compression');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,6 +15,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// security setup with Helmet
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
@@ -22,6 +24,18 @@ app.use(helmet.contentSecurityPolicy({
     // styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'] for bootstrap cdn css only
   }
 }));
+
+// gzip compression of response object using Compression
+app.use(compression({filter: shouldCompress}))
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
