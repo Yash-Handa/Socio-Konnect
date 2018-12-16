@@ -2,6 +2,8 @@
 
 The development environment for Express with Front end boiler plates
 
+## The app is made using Express generator(v 4.16.0) with handlebars and runs on port 1998
+
 ## Express Security
 
 For security **Helmet** is used with its defaults and additionally **Content Security Policy**
@@ -12,6 +14,16 @@ For security **Helmet** is used with its defaults and additionally **Content Sec
 ## Response Compression
 
 The response object is gzip compressed using [compression](https://www.npmjs.com/package/compression). To request for an uncompressed response use **x-no-compression** in the request header.
+
+## NPM Commands
+
+* `npm install` - installs all the dependencies
+* `npm start` - lints the server and client script, starts eslint on watch mode on server scripts and starts the project at **localhost:1998** in debug mode.
+* `npm run lint-server` - lints the server scripts (all scripts except that in node_module and public directory) once.
+* `npm run lint-client` - lints the client scripts (all scripts in the public directory) once.
+* `npm run lint-w` - starts the linter in watch mode. When called from root directory it watches the server scripts and when called in public directory it watches the client scripts.
+* `npm run localTunnel` - exposes **localhost:1998** to the world wide web
+* `npm run lt` - runs `npm start` and `npm run localTunnel` in parallel
 
 ## Notes
 
