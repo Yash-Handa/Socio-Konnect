@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const debug = require('debug')('express-dev-env:Database');
+const config = require('../bin/config/config');
 
 // connecting mongoose with MongoBD database using env variables
-mongoose.connect(process.env.DB_LINK, {
-  user: process.env.DB_USER,
-  pass: process.env.DB_PASS,
-  dbName: process.env.DB_NAME,
+mongoose.connect(config.dbLink, {
+  user: config.dbUser,
+  pass: config.dbPass,
+  dbName: config.dbName,
   useNewUrlParser: true,
   useCreateIndex: true,
   reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect

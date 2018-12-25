@@ -12,9 +12,15 @@ One of the best way to keep your secret keys, api keys, DB username and password
 2. change the filename from `.env.set` to `.env`
 3. Add all your secret keys, api keys, DB username and passwords in this file.
 4. These keys will be then set to nodes env variable (follow the format: `DB_NAME = "~"` and replace ~ with key values.)
-5. To access these values in a file use: `process.env.<KEY_NAME>` eg: `process.env.DB_NAME`
+5. To access these values in a file use: see **Config object** below.
 
 >note: `.env` files contain crucial information and are **not uploaded to GitHub**
+
+## Config Object
+
+the file `./bin/config/config` exports the config object which is a **cover over the .env file** for better protections and encapsulation
+the `./bin/config` directory also have the `development.js`, `production.js` and `testing.js` files for fine tuning the config object in the respective NODE_ENV
+for more info open these files and go through the comments.
 
 ## Express Security
 
