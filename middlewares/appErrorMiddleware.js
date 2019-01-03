@@ -7,6 +7,17 @@ the error will be written to the client with the stack trace.
 The stack trace is not included in the production environment.
 */
 function handler(app) {
+  // custom error handler for CSRF token error
+  app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+
+    // handle CSRF token errors here
+    res.locals.message = '403 form tampered with';
+    res.status(403);
+    res.render('error');
+    return 0; // do nothing
+  });
+
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
     // eslint-disable-line no-unused-vars

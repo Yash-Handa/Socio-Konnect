@@ -29,6 +29,13 @@ For security **Helmet** is used with its defaults and additionally **Content Sec
 * **Helmet** - [npm Doc](https://www.npmjs.com/package/helmet)
 * **Content Security Policy** - [Helmet Doc](https://helmetjs.github.io/docs/csp/)
 
+Additionally other mechanisms are also used:-
+
+* **csurf** - CSRF protection is applied to the entire project. If CSRF is to be enabled only on some routes then go to `./middlewares/security/globalSecurity.js` and disable it and import `./middlewares/security/csurfSetup.js` to the file where it is required. for more details refer [csurf](https://www.npmjs.com/package/csurf).
+* **limiter** - to block a user from accessing a route more than a given no. of time in a set duration(eg 150 requests per hour). limiter is set but **NEVER USED**. For more details refer [limiter](https://www.npmjs.com/package/limiter). How to use:-
+  * require the limiterSetup file: `./middlewares/security/limiterSetup.js`
+  * this will return an express middleware which can be used on any route, router or on app.
+
 ## Response Compression
 
 The response object is gzip compressed using [compression](https://www.npmjs.com/package/compression). To request for an uncompressed response use **x-no-compression** in the request header.
@@ -57,3 +64,7 @@ The response object is gzip compressed using [compression](https://www.npmjs.com
 
 * Use cookies securely
 * Add proper Logging ([Bunyan](https://github.com/trentm/node-bunyan) or [Winston](https://github.com/winstonjs/winston))
+* Use CORS according to your project.
+  * CORS allows other servers and domains to access/request your content. It is **restricted by default**
+  * A possible use case could a public API project which is used by others to use your content.
+  * you could use [cors](https://www.npmjs.com/package/cors) library to implement it.

@@ -1,11 +1,12 @@
 // global middleware registered on the app instance
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const helmet = require('helmet');
 const favicon = require('serve-favicon');
 const compression = require('compression');
 const path = require('path');
 const express = require('express');
+
+const security = require('./security/globalSecurity');
 
 // gzip compression of response object using Compression
 function shouldCompress(req, res) {
@@ -18,16 +19,6 @@ function shouldCompress(req, res) {
 }
 
 function setup(app) {
-  // security setup with Helmet
-  app.use(helmet());
-  app.use(helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'"],
-      // styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'] for bootstrap cdn css only
-    },
-  }));
-
   // compressing the response object
   app.use(compression({
     filter: shouldCompress,
@@ -43,10 +34,13 @@ function setup(app) {
     extended: false,
   }));
   app.use(cookieParser());
+  security(app);
   app.use(express.static(path.join(__dirname, '../public/src')));
 }
 
 module.exports = setup;
+
+// secure way to use express-session package if needed
 
 // app.use(session({
 //   secret: 'mySecretCookieSalt',
@@ -60,12 +54,3 @@ module.exports = setup;
 //     expires: new Date( Date.now() + 60 * 60 * 1000 )
 //   }
 // }));
-
-// const limiter = require('express-limiter')(app, redisClient);
-
-// // Limit requests to 100 per hour per ip address.
-// limiter({
-//   lookup: ['connection.remoteAddress'],
-//   total: 100,
-//   expire: 1000 * 60 * 60
-// }),
