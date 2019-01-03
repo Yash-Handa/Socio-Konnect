@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const debug = require('debug')('express-dev-env:server');
+const debug = require('debug')('SignIn-SignUp:server');
 const http = require('http');
 const app = require('../app');
 

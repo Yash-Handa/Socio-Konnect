@@ -8,8 +8,8 @@ module.exports = app => {
   app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'"],
-      // styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'] for bootstrap cdn css only
+      styleSrc: ["'self'", 'fonts.googleapis.com/icon'],
+      fontSrc: ["'self'", 'fonts.gstatic.com/'],
     },
   }));
 };

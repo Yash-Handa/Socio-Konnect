@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const debug = require('debug')('express-dev-env:Database');
+const debug = require('debug')('SignIn-SignUp:Database');
 const config = require('../bin/config/config');
 
 // connecting mongoose with MongoBD database using env variables
