@@ -9,11 +9,21 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.status(200).send('Welcome to login');
+  res.status(200).render('login', {
+    title: 'Login',
+    csrfToken: req.csrfToken(),
+  });
+});
+
+router.post('/login', (req, res) => {
+  res.status(200).send('hello');
 });
 
 router.get('/register', (req, res) => {
-  res.status(200).send('Welcome to register');
+  res.status(200).render('register', {
+    title: 'Register',
+    csrfToken: req.csrfToken(),
+  });
 });
 
 module.exports = router;

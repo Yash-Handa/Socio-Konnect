@@ -37,6 +37,7 @@ function setup(app) {
   security(app);
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
+  app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
 }
 
 module.exports = setup;
