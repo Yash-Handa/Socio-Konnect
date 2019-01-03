@@ -1,2 +1,39 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<head>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/sign.css"/>
+</head>
+<div class="box animated fadeInDown">
+  <div id="header">
+    <div id="cont-lock"><i class="material-icons hero">account_circle</i></div>
+    <div id="bottom-head"><h1>Register</h1></div>
+  </div>
+   <div class="row set">
+    <form class="col s12" method="POST" action="">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="email" name="username" class="validate" required>
+          <label for="username">User Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" name="email" class="validate" required>
+          <label for="email">Email Id</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" name="password" class="validate" required>
+          <label for="password">Password</label>
+        </div>
+      </div><div class="row">
+        <div class="input-field col s12">
+          <input id="rePass" type="password" name="rePass" class="validate" required>
+          <label for="rePass">Confirm Password</label>
+        </div>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  <div id="footer-box"><p class="footer-text">Already a member?<span class="sign-up"><a href="/users/login"> Sign in here </a></span></p></div>
+</div>

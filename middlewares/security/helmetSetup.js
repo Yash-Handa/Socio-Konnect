@@ -9,7 +9,7 @@ module.exports = app => {
     directives: {
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", 'fonts.googleapis.com/'],
-      fontSrc: ["'self'", 'fonts.gstatic.com/'],
+      fontSrc: ["'self'"],
     },
   }));
 };
