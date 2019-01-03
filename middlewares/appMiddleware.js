@@ -47,10 +47,12 @@ module.exports = setup;
 //   key: 'myCookieSessionId',
 //   cookie: {
 //     httpOnly: true,
-//     secure: true,
+//     secure: true, // in production (can use config directory)
 //     domain: 'example.com',
 //     path: '/foo/bar',
 //     // Cookie will expire in 1 hour from when it's generated
 //     expires: new Date( Date.now() + 60 * 60 * 1000 )
 //   }
 // }));
+
+// use connect-mongo for effective session storage
