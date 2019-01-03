@@ -38,6 +38,7 @@ function setup(app) {
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
   app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
+  app.use(express.static(path.join(__dirname, '../node_modules/@fortawesome/fontawesome-free/css')));
 }
 
 module.exports = setup;
