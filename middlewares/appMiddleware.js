@@ -3,10 +3,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
 const compression = require('compression');
+const session = require('express-session');
+const flash = require('connect-flash');
 const path = require('path');
 const express = require('express');
 
 const security = require('./security/globalSecurity');
+const passport = require('./passport/passportSetup');
 
 // gzip compression of response object using Compression
 function shouldCompress(req, res) {
@@ -29,12 +32,33 @@ function setup(app) {
 
   // logging requests to the console using morgan
   app.use(logger('dev'));
+  app.use(cookieParser());
+
+  // added express-session for persistent logins
+  app.use(session({
+    secret: 'mySecretCookieSalt',
+    cookie: {
+      httpOnly: true,
+      secure: true, // in production (can use config directory)
+      // domain: 'example.com',
+      path: '/',
+      // Cookie will expire in 1 hour from when it's generated
+      // expires: new Date( Date.now() + 60 * 60 * 1000 )
+    },
+  }));
+
+  // connect-flash added for flash messages
+  app.use(flash());
   app.use(express.json());
   app.use(express.urlencoded({
     extended: false,
   }));
-  app.use(cookieParser());
+
+  // setup the security settings present in the security file
   security(app);
+
+  // setup passport configurations
+  passport(app);
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
   app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));

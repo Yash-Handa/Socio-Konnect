@@ -8,4 +8,10 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'SignIn-SighUp' });
 });
 
+router.get('/dashboard', (req, res) => {
+  res.status(200).render('dashboard', {
+    title: 'Dashboard',
+  });
+});
+
 module.exports = router;

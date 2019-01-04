@@ -7,17 +7,17 @@
     <div id="bottom-head"><h1>Register</h1></div>
   </div>
    <div class="row set">
-    <form class="col s12" method="POST" action="">
+    <form class="col s12" method="POST" action="/users/register">
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <div class="row">
         <div class="input-field col s12">
-          <input id="username" type="email" name="username" class="validate" required>
+          <input id="username" type="text" name="username" class="validate" required value={{username}}>
           <label for="username">User Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" name="email" class="validate" required>
+          <input id="email" type="email" name="email" class="validate" required value={{email}}>
           <label for="email">Email Id</label>
         </div>
       </div>

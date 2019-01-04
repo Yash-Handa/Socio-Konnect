@@ -1,17 +1,19 @@
 <head>
-  <link type="text/css" rel="stylesheet" href="/stylesheets/sign.css"/>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/sign.css" />
 </head>
 <div class="box animated fadeInDown">
   <div id="header">
     <div id="cont-lock"><i class="hero fas fa-user-lock"></i></div>
-    <div id="bottom-head"><h1>Login</h1></div>
+    <div id="bottom-head">
+      <h1>Login</h1>
+    </div>
   </div>
-   <div class="row set">
-    <form class="col s12" method="POST" action="">
-    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+  <div class="row set">
+    <form class="col s12" method="POST" action="/users/login">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" name="email" class="validate" required>
+          <input id="email" type="email" name="email" class="validate" required value={{email}}>
           <label for="email">Email Id</label>
         </div>
       </div>
@@ -24,5 +26,7 @@
       <button id="buttonlogintoregister" type="submit">Login</button>
     </form>
   </div>
-  <div id="footer-box"><p class="footer-text">Not a member?<span class="sign-up"><a href="/users/register"> Sign up now </a></span></p></div>
+  <div id="footer-box">
+    <p class="footer-text">Not a member?<span class="sign-up"><a href="/users/register"> Sign up now </a></span></p>
+  </div>
 </div>

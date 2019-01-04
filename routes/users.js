@@ -16,7 +16,14 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  res.status(200).send('hello');
+  // use this if block if validation fails
+  if (true) {
+    res.status(200).render('login', {
+      title: 'Login',
+      csrfToken: req.csrfToken(),
+      email: req.body.email,
+    });
+  }
 });
 
 router.get('/register', (req, res) => {
@@ -24,6 +31,19 @@ router.get('/register', (req, res) => {
     title: 'Register',
     csrfToken: req.csrfToken(),
   });
+});
+
+router.post('/register', (req, res) => {
+  console.log(req.body);
+  // use this if block if validation fails
+  if (true) {
+    res.status(200).render('register', {
+      title: 'Register',
+      csrfToken: req.csrfToken(),
+      email: req.body.email,
+      username: req.body.username,
+    });
+  }
 });
 
 module.exports = router;
