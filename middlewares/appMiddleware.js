@@ -37,6 +37,8 @@ function setup(app) {
   // added express-session for persistent logins
   app.use(session({
     secret: 'mySecretCookieSalt',
+    resave: true,
+    saveUninitialized: false,
     cookie: {
       httpOnly: true,
       secure: true, // in production (can use config directory)

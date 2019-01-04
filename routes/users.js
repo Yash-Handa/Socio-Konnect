@@ -1,4 +1,5 @@
 const express = require('express');
+const validator = require('../middlewares/users/validator');
 // const saveUser = require('../DB/createUsers');
 
 const router = express.Router();
@@ -33,16 +34,19 @@ router.get('/register', (req, res) => {
   });
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', validator, (req, res) => {
   console.log(req.body);
   // use this if block if validation fails
-  if (true) {
+  if (req.errors.length > 0) {
     res.status(200).render('register', {
       title: 'Register',
       csrfToken: req.csrfToken(),
       email: req.body.email,
       username: req.body.username,
+      errors: req.errors,
     });
+  } else {
+    res.status(200).json(req.body);
   }
 });
 

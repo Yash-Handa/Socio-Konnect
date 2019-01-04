@@ -1,1 +1,6 @@
-<h1>hello</h1>
+
+{{#if errors}}
+    {{#each errors}}
+      <h6 class="toastMaker">{{this.msg}}</h6>
+    {{/each}}
+{{/if}}
