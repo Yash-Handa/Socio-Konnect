@@ -32,6 +32,10 @@ function setup(app) {
 
   // logging requests to the console using morgan
   app.use(logger('dev'));
+  app.use(express.json());
+  app.use(express.urlencoded({
+    extended: false,
+  }));
   app.use(cookieParser());
 
   // added express-session for persistent logins
@@ -41,20 +45,19 @@ function setup(app) {
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true, // in production (can use config directory)
+      // secure: true, // in production (can use config directory)
       // domain: 'example.com',
       path: '/',
-      // Cookie will expire in 1 hour from when it's generated
-      // expires: new Date( Date.now() + 60 * 60 * 1000 )
     },
   }));
 
   // connect-flash added for flash messages
   app.use(flash());
-  app.use(express.json());
-  app.use(express.urlencoded({
-    extended: false,
-  }));
+  app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+  });
 
   // setup the security settings present in the security file
   security(app);

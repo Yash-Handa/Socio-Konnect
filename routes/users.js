@@ -1,6 +1,8 @@
 const express = require('express');
+const debug = require('debug')('SignIn-SignUp:user');
+
 const validator = require('../middlewares/users/validator');
-// const saveUser = require('../DB/createUsers');
+const saveUser = require('../DB/createUsers');
 
 const router = express.Router();
 
@@ -13,6 +15,8 @@ router.get('/login', (req, res) => {
   res.status(200).render('login', {
     title: 'Login',
     csrfToken: req.csrfToken(),
+    success_msg: res.locals.success_msg,
+    error_msg: res.locals.error_msg,
   });
 });
 
@@ -34,8 +38,7 @@ router.get('/register', (req, res) => {
   });
 });
 
-router.post('/register', validator, (req, res) => {
-  console.log(req.body);
+router.post('/register', validator, (req, res, next) => {
   // use this if block if validation fails
   if (req.errors.length > 0) {
     res.status(200).render('register', {
@@ -46,7 +49,15 @@ router.post('/register', validator, (req, res) => {
       errors: req.errors,
     });
   } else {
-    res.status(200).json(req.body);
+    saveUser(req.body.username, req.body.email, req.body.password)
+      .then(() => {
+        req.flash('success_msg', 'You are registered and can logIn');
+        res.status(304).redirect('/users/login');
+      })
+      .catch(err => {
+        debug(err);
+        next(err);
+      });
   }
 });
 

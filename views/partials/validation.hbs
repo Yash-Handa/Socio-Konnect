@@ -4,3 +4,11 @@
       <h6 class="toastMaker">{{this.msg}}</h6>
     {{/each}}
 {{/if}}
+
+{{#if success_msg}}
+    <h6 class="toastMaker" id="success">{{success_msg}}</h6>
+{{/if}}
+
+{{#if error_msg}}
+    <h6 class="toastMaker">{{error_msg}}</h6>
+{{/if}}

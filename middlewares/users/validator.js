@@ -1,5 +1,6 @@
 const User = require('../../DB/schema');
 
+// eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   let {
     username,
@@ -42,5 +43,4 @@ module.exports = (req, res, next) => {
       return next();
     })
     .catch(err => next(err));
-  return next();
 };
