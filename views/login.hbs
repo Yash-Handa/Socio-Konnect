@@ -1,5 +1,6 @@
 <head>
   <link type="text/css" rel="stylesheet" href="/stylesheets/sign.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/authButtons.css" />
 </head>
 <div class="box animated fadeInDown">
   <div id="header">
@@ -10,6 +11,32 @@
   </div>
   {{> validation}}
   <div class="row set">
+    <div id="auth">
+      <div class="button google">
+        <p class="btnText">Google</p>
+        <div class="btnTwo">
+          <p class="btnText2"><i class="fab fa-google"></i></p>
+        </div>
+      </div>
+      <div class="button facebook">
+        <p class="btnText">Facebook</p>
+        <div class="btnTwo">
+          <p class="btnText2"><i class="fab fa-facebook-f"></i></p>
+        </div>
+      </div>
+      <div class="button github">
+        <p class="btnText">Github</p>
+        <div class="btnTwo">
+          <p class="btnText2"><i class="fab fa-github"></i></p>
+        </div>
+      </div>
+      <div class="button linkedin">
+        <p class="btnText">Linkedin</p>
+        <div class="btnTwo">
+          <p class="btnText2"><i class="fab fa-linkedin-in"></i></p>
+        </div>
+      </div>
+    </div>
     <form class="col s12" method="POST" action="/users/login">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <div class="row">
