@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const path = require('path');
 
 require('./DB/connect');
+const appMiddleware = require('./middlewares/appMiddleware');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
@@ -16,7 +17,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 // add global middlewares to the app instance
-require('./middlewares/appMiddleware')(app);
+appMiddleware(app);
 
 app.use('/users', usersRouter);
 app.use('/', indexRouter);

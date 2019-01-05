@@ -51,6 +51,9 @@ function setup(app) {
     },
   }));
 
+  // setup passport configurations
+  passport(app);
+
   // connect-flash added for flash messages
   app.use(flash());
   app.use((req, res, next) => {
@@ -62,8 +65,6 @@ function setup(app) {
   // setup the security settings present in the security file
   security(app);
 
-  // setup passport configurations
-  passport(app);
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
   app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));

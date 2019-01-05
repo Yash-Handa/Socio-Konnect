@@ -1,5 +1,6 @@
 const express = require('express');
 const debug = require('debug')('SignIn-SignUp:user');
+const passport = require('passport');
 
 const validator = require('../middlewares/users/validator');
 const saveUser = require('../DB/createUsers');
@@ -15,21 +16,29 @@ router.get('/login', (req, res) => {
   res.status(200).render('login', {
     title: 'Login',
     csrfToken: req.csrfToken(),
+    email: req.body.email,
     success_msg: res.locals.success_msg,
     error_msg: res.locals.error_msg,
   });
 });
 
-router.post('/login', (req, res) => {
-  // use this if block if validation fails
-  if (true) {
-    res.status(200).render('login', {
-      title: 'Login',
-      csrfToken: req.csrfToken(),
-      email: req.body.email,
-    });
-  }
-});
+router.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  }));
+
+// router.post('/login', (req, res) => {
+//   // use this if block if validation fails
+//   if (true) {
+//     res.status(200).render('login', {
+//       title: 'Login',
+//       csrfToken: req.csrfToken(),
+//       email: req.body.email,
+//     });
+//   }
+// });
 
 router.get('/register', (req, res) => {
   res.status(200).render('register', {

@@ -4,6 +4,8 @@
   },
   "extends": "airbnb-base",
   "rules": {
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "func-names": "off",
+    "consistent-return": "off"
 }
 }
