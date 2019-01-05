@@ -3,15 +3,17 @@ const bcryptjs = require('bcryptjs');
 const User = require('../../DB/schema');
 
 module.exports = function (passport) {
-  passport.use(
+  passport.use(new LocalStrategy(
     {
       usernameField: 'email',
     },
-    new LocalStrategy((email, password, done) => {
+    (email, password, done) => {
       User.findOne({ email }).exec()
         .then(user => {
           if (!user) {
-            return done(null, false, { message: 'Email not registered' });
+            return done(null, false, {
+              message: 'Email not registered',
+            });
           }
 
           // match password
@@ -21,10 +23,12 @@ module.exports = function (passport) {
             // return user
             if (isMatch) return done(null, user);
 
-            return done(null, false, { message: 'Incorrect password.' });
+            return done(null, false, {
+              message: 'Incorrect password.',
+            });
           });
         })
         .catch(err => done(err));
-    }),
-  );
+    },
+  ));
 };

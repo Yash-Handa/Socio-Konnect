@@ -9,7 +9,7 @@ const path = require('path');
 const express = require('express');
 
 const security = require('./security/globalSecurity');
-const passport = require('./passport/passportSetup');
+const passportSetup = require('./passport/passportSetup');
 
 // gzip compression of response object using Compression
 function shouldCompress(req, res) {
@@ -52,13 +52,15 @@ function setup(app) {
   }));
 
   // setup passport configurations
-  passport(app);
+  passportSetup(app);
 
   // connect-flash added for flash messages
   app.use(flash());
   app.use((req, res, next) => {
+    res.locals.email = req.flash('email');
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
   });
 
@@ -68,7 +70,6 @@ function setup(app) {
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
   app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
-  app.use(express.static(path.join(__dirname, '../node_modules/@fortawesome/fontawesome-free/css')));
 }
 
 module.exports = setup;

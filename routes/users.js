@@ -16,29 +16,24 @@ router.get('/login', (req, res) => {
   res.status(200).render('login', {
     title: 'Login',
     csrfToken: req.csrfToken(),
-    email: req.body.email,
+    email: res.locals.email,
     success_msg: res.locals.success_msg,
     error_msg: res.locals.error_msg,
+    error: res.locals.error,
   });
 });
 
 router.post('/login',
+  (req, res, next) => {
+    // for sending email with re-direct
+    req.flash('email', req.body.email);
+    next();
+  },
   passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
+    successRedirect: '/dashboard',
+    failureRedirect: '/users/login',
     failureFlash: true,
   }));
-
-// router.post('/login', (req, res) => {
-//   // use this if block if validation fails
-//   if (true) {
-//     res.status(200).render('login', {
-//       title: 'Login',
-//       csrfToken: req.csrfToken(),
-//       email: req.body.email,
-//     });
-//   }
-// });
 
 router.get('/register', (req, res) => {
   res.status(200).render('register', {
@@ -68,6 +63,12 @@ router.post('/register', validator, (req, res, next) => {
         next(err);
       });
   }
+});
+
+router.get('/logout', (req, res) => {
+  req.logOut();
+  req.flash('success_msg', 'You are logged out');
+  res.status(301).redirect('/users/login');
 });
 
 module.exports = router;
