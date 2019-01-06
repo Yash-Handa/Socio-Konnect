@@ -38,6 +38,16 @@ module.exports = (req, res, next) => {
   User.findOne({ email }).exec()
     .then(data => {
       if (data) {
+        const createdDate = data.date.getTime();
+        const now = Date.now();
+        // get total seconds between the times
+        const delta = Math.abs(now - createdDate) / 1000;
+        const hours = Math.floor(delta / 3600);
+        if (data.confirmed === false && hours > 1) {
+          data.remove();
+          return next();
+        }
+
         req.errors.push({ msg: 'Email Already registered' });
       }
       return next();

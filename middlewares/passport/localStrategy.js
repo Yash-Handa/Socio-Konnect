@@ -21,7 +21,25 @@ module.exports = function (passport) {
             if (err) return done(err);
 
             // return user
-            if (isMatch) return done(null, user);
+            if (isMatch) {
+              // check if email is confirmed or not
+              if (user.confirmed) return done(null, user);
+
+              const createdDate = user.date.getTime();
+              const now = Date.now();
+              // get total seconds between the times
+              const delta = Math.abs(now - createdDate) / 1000;
+              const hours = Math.floor(delta / 3600);
+              if (user.confirmed === false && hours > 1) {
+                user.remove();
+                return done(null, false, {
+                  message: 'Register again because you didn\'t verify your Email',
+                });
+              }
+              return done(null, false, {
+                message: 'Verify your email to Login',
+              });
+            }
 
             return done(null, false, {
               message: 'Incorrect password.',

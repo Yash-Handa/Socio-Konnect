@@ -6,6 +6,7 @@ module.exports = (username, email, password) => {
   const user = new User({
     username,
     email,
+    confirmed: false,
   });
 
   return new Promise((resolve, reject) => {

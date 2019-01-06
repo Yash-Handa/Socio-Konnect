@@ -15,11 +15,15 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    minlength: 6,
   },
   date: {
     type: Date,
     default: Date.now,
+  },
+  confirmed: {
+    type: Boolean,
+    default: true,
   },
   google: {},
   facebook: {},

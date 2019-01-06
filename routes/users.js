@@ -4,6 +4,7 @@ const passport = require('passport');
 
 const validator = require('../middlewares/users/validator');
 const saveUser = require('../DB/createUsers');
+const emailVerifier = require('./auth/email');
 
 const router = express.Router();
 
@@ -55,9 +56,11 @@ router.post('/register', validator, (req, res, next) => {
   } else {
     saveUser(req.body.username, req.body.email, req.body.password)
       .then(() => {
-        req.flash('success_msg', 'You are registered and can logIn');
         req.flash('email', req.body.email);
-        res.status(304).redirect('/users/login');
+        res.status(304).redirect('/users/emailPrompt');
+        // req.flash('success_msg', 'You are registered and can logIn');
+        // req.flash('email', req.body.email);
+        // res.status(304).redirect('/users/login');
       })
       .catch(err => {
         debug(err);
@@ -71,5 +74,7 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out');
   res.status(301).redirect('/users/login');
 });
+
+emailVerifier(router);
 
 module.exports = router;

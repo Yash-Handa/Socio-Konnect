@@ -1,0 +1,26 @@
+<head>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/emailSend.css" />
+</head>
+<div class="box animated fadeInDown">
+  <div id="header">
+    <div id="cont-lock"><i class="hero fas fa-envelope"></i></div>
+    <div id="bottom-head">
+      <h1>Email Sent</h1>
+    </div>
+  </div>
+  {{> validation}}
+  <div class="row set">
+    <p>The confirmation email has been send to <strong>{{email}}</strong>. Please check your inbox for Confirmation</p>
+    <p><strong>Do not refresh the Page till mail is acquired</strong>
+    <p><strong>If not verified in an Hour the Email Id will be un-registered</strong></p><br>
+    <p><i>**Do check your Spam before requesting a resend mail</i></p>
+    <form method="POST" action="/users/emailPrompt">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <input type="hidden" name="resend" value="{{email}}">
+      <button id="prompt" type="submit">Resend Mail</button>
+    </form>
+  </div>
+  <div id="footer-box">
+    <p class="footer-text">Not a member?<span class="sign-up"><a href="/users/register"> Sign up now </a></span></p>
+  </div>
+</div>
