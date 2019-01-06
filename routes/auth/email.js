@@ -20,7 +20,7 @@ module.exports = router => {
     res.locals.email = req.body.resend;
     res.locals.jwt = req.body.jwt;
     next();
-  }, verify.sender, (req, res) => {
+  }, (req, res) => {
     req.flash('success_msg', `The mail is Resent to ${req.body.resend}`);
     res.status(304).redirect('/users/emailPrompt');
   });

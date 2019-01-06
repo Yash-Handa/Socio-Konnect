@@ -10,7 +10,8 @@
 */
 
 module.exports = {
-  abc: {
-    xyz: '123',
-  },
+  host: process.env.DEV_HOST,
+  yahooUser: process.env.DEV_EMAIL,
+  yahooPass: process.env.DEV_EMAIL_PASS,
+  sender: process.env.EMAIL_SENDER,
 };

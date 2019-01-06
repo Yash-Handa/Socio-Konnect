@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const mailer = require('../../utils/verificationMailer');
 
 const secret = require('../../bin/config/config').jwtSecret;
 const User = require('../../DB/schema');
@@ -31,6 +32,7 @@ module.exports = {
 
     if (jwtKey && email) {
       // now send mail.
+      mailer(email, jwtKey);
       next();
     }
   },
