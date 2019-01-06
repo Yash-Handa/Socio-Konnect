@@ -56,6 +56,7 @@ router.post('/register', validator, (req, res, next) => {
     saveUser(req.body.username, req.body.email, req.body.password)
       .then(() => {
         req.flash('success_msg', 'You are registered and can logIn');
+        req.flash('email', req.body.email);
         res.status(304).redirect('/users/login');
       })
       .catch(err => {
