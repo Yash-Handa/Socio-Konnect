@@ -17,6 +17,7 @@
     <form method="POST" action="/users/emailPrompt">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <input type="hidden" name="resend" value="{{email}}">
+      <input type="hidden" name="jwt" value="{{jwt}}">
       <button id="prompt" type="submit">Resend Mail</button>
     </form>
   </div>

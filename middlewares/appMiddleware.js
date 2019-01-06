@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 // global middleware registered on the app instance
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -36,6 +37,9 @@ function setup(app) {
   app.use(express.urlencoded({
     extended: false,
   }));
+  app.use(express.static(path.join(__dirname, '../public/src')));
+  app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
+  app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
   app.use(cookieParser());
 
   // added express-session for persistent logins
@@ -57,19 +61,17 @@ function setup(app) {
   // connect-flash added for flash messages
   app.use(flash());
   app.use((req, res, next) => {
-    res.locals.email = req.flash('email');
+    res.locals.email = req.flash('email')[0] || res.locals.email;
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.jwt = req.flash('jwt')[0] || res.locals.jwt;
+    console.log('from', req.flash('jwt'), res.locals.email);
     next();
   });
 
   // setup the security settings present in the security file
   security(app);
-
-  app.use(express.static(path.join(__dirname, '../public/src')));
-  app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
-  app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
 }
 
 module.exports = setup;

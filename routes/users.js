@@ -40,6 +40,8 @@ router.get('/register', (req, res) => {
   res.status(200).render('register', {
     title: 'Register',
     csrfToken: req.csrfToken(),
+    email: res.locals.email,
+    error_msg: res.locals.error_msg,
   });
 });
 

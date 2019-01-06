@@ -1,23 +1,29 @@
-// const email = (req, res, next) => {
-//   // create and send the mail
-// };
+const verify = require('../../middlewares/users/verify');
 
 
 module.exports = router => {
-  router.get('/emailPrompt', (req, res) => {
-    const { email } = res.locals;
+  router.get('/emailPrompt', verify.jwtCreator, verify.sender, (req, res) => {
+    const { email, jwt } = res.locals;
     res.status(200).render('emailSend', {
       title: 'Email Confirmation',
       csrfToken: req.csrfToken(),
+      jwt,
       email,
       error_msg: res.locals.error_msg,
       success_msg: res.locals.success_msg,
     });
   });
 
-  router.post('/emailPrompt', (req, res) => {
+  router.post('/emailPrompt', (req, res, next) => {
     req.flash('email', req.body.resend);
+    req.flash('jwt', req.body.jwt);
+    res.locals.email = req.body.resend;
+    res.locals.jwt = req.body.jwt;
+    next();
+  }, verify.sender, (req, res) => {
     req.flash('success_msg', `The mail is Resent to ${req.body.resend}`);
     res.status(304).redirect('/users/emailPrompt');
   });
+
+  router.get('/confirmation/:jwt', verify.checker);
 };
