@@ -31,9 +31,13 @@ module.exports = {
     }
 
     if (jwtKey && email) {
-      // now send mail.
-      mailer(email, jwtKey);
-      next();
+      User.findOne({ email }).exec()
+        .then(user => {
+          // now send mail.
+          mailer(email, jwtKey, user.username);
+          next();
+        })
+        .catch(err => next(err));
     }
   },
 
