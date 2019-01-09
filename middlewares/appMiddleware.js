@@ -7,6 +7,7 @@ const compression = require('compression');
 const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
+const MongoStore = require('connect-mongo')(session);
 const express = require('express');
 
 const security = require('./security/globalSecurity');
@@ -22,7 +23,9 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-function setup(app) {
+// MongoStore.on('create', (id) => console.log('session id', id));
+
+function setup(app, connectDB) {
   // compressing the response object
   app.use(compression({
     filter: shouldCompress,
@@ -45,10 +48,12 @@ function setup(app) {
   // added express-session for persistent logins
   app.use(session({
     secret: 'mySecretCookieSalt',
+    store: new MongoStore({ mongooseConnection: connectDB.connection, clear_interval: 3600 }),
     resave: true,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
+      maxAge: 3600000, // 1hr
       // secure: true, // in production (can use config directory)
       // domain: 'example.com',
       path: '/',
@@ -66,7 +71,6 @@ function setup(app) {
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     res.locals.jwt = req.flash('jwt')[0] || res.locals.jwt;
-    console.log('from', req.flash('jwt'), res.locals.email);
     next();
   });
 

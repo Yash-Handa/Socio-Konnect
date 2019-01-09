@@ -3,7 +3,7 @@ const debug = require('debug')('SignIn-SignUp:Database');
 const config = require('../bin/config/config');
 
 // connecting mongoose with MongoBD database using env variables
-mongoose.connect(config.dbLink, {
+module.exports.connect = mongoose.connect(config.dbLink, {
   user: config.dbUser,
   pass: config.dbPass,
   dbName: config.dbName,
@@ -18,7 +18,8 @@ mongoose.connect(config.dbLink, {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4, // Use IPv4, skip trying IPv6
 });
-mongoose.connection
+
+module.exports.connection = mongoose.connection
   .on('error', err => debug('Warning: ', err))
   .once('open', () => {
     debug('connected to the DB');
