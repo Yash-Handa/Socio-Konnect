@@ -10,7 +10,7 @@
   {{> validation}}
    <div class="row set">
      <div id="auth">
-      <a href="/users/google" class="button google">
+      <a href="/auth/google" class="button google">
         <p class="btnText">Google</p>
         <div class="btnTwo">
           <p class="btnText2"><i class="fab fa-google"></i></p>
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <form class="col s12" method="POST" action="/users/register">
+    <form class="col s12" method="POST" action="/auth/register">
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <div class="row">
         <div class="input-field col s12">
@@ -63,5 +63,5 @@
       <button type="submit">Register</button>
     </form>
   </div>
-  <div id="footer-box"><p class="footer-text">Already a member?<span class="sign-up"><a href="/users/login"> Sign in here </a></span></p></div>
+  <div id="footer-box"><p class="footer-text">Already a member?<span class="sign-up"><a href="/auth/login"> Sign in here </a></span></p></div>
 </div>

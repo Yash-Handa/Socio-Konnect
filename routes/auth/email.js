@@ -1,4 +1,4 @@
-const verify = require('../../middlewares/users/verify');
+const verify = require('../../middlewares/auth/verify');
 
 
 module.exports = router => {
@@ -22,7 +22,7 @@ module.exports = router => {
     next();
   }, (req, res) => {
     req.flash('success_msg', `The mail is Resent to ${req.body.resend}`);
-    res.status(304).redirect('/users/emailPrompt');
+    res.status(304).redirect('/auth/emailPrompt');
   });
 
   router.get('/confirmation/:jwt', verify.checker);

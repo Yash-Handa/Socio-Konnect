@@ -48,7 +48,7 @@ module.exports = {
         if (err.name === 'TokenExpiredError') {
           // redirect to register
           req.flash('error_msg', 'Register again because verification time is over');
-          res.status(304).redirect('/users/register');
+          res.status(304).redirect('/auth/register');
         }
         next(err);
       }
@@ -62,13 +62,13 @@ module.exports = {
               if (error) next(err);
               req.flash('success_msg', 'You are Verified and can logIn');
               req.flash('email', updatedUser.email);
-              res.status(304).redirect('/users/login');
+              res.status(304).redirect('/auth/login');
             });
           } else {
             // redirect to register with no user found
             req.flash('email', decoded.email);
             req.flash('error_msg', 'No such user exist Please Register');
-            res.status(304).redirect('/users/register');
+            res.status(304).redirect('/auth/register');
           }
         })
         .catch(error => next(error));

@@ -14,7 +14,7 @@
     <p><strong>Do not refresh the Page till mail is acquired</strong>
     <p><strong>If not verified in an Hour the Email Id will be un-registered</strong></p><br>
     <p><i>**Do check your Spam before requesting a resend mail</i></p>
-    <form method="POST" action="/users/emailPrompt">
+    <form method="POST" action="/auth/emailPrompt">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <input type="hidden" name="resend" value="{{email}}">
       <input type="hidden" name="jwt" value="{{jwt}}">
@@ -22,6 +22,6 @@
     </form>
   </div>
   <div id="footer-box">
-    <p class="footer-text">Not a member?<span class="sign-up"><a href="/users/register"> Sign up now </a></span></p>
+    <p class="footer-text">Not a member?<span class="sign-up"><a href="/auth/register"> Sign up now </a></span></p>
   </div>
 </div>

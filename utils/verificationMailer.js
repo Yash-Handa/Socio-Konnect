@@ -33,29 +33,29 @@ module.exports = (email, jwt, username) => {
     </div>
     <div style="width: 80%; margin: auto;margin-bottom: 20px;font-size: 14px;text-align: center;">
       <p style="font-size: 17px; margin: 15px 0 35px">Hey <strong>${username}</strong>, you're almost ready to start enjoying ${config.sender}. Simply click the big Green Button below to verify your Account :)</p>
-      <a href="${config.host}/users/confirmation/${jwt}" style= "border: 0; text-align: center;background: #009688;color: #eee;padding: 10px;font-size: 16px;font-weight: 300;max-width: 200px;margin: 20px auto;display: block;cursor: pointer;border-radius: 2px;box-shadow: 0px 5px 6px rgba(0,0,0,0.3);text-decoration: none;">Confirm Account</a>
+      <a href="${config.host}/auth/confirmation/${jwt}" style= "border: 0; text-align: center;background: #009688;color: #eee;padding: 10px;font-size: 16px;font-weight: 300;max-width: 200px;margin: 20px auto;display: block;cursor: pointer;border-radius: 2px;box-shadow: 0px 5px 6px rgba(0,0,0,0.3);text-decoration: none;">Confirm Account</a>
       <p style="font-size: 13px; margin: 0 0 75px"><strong>If not verified under 1 Hour (of first email) the Email Id will be un-registered</strong></p><br>
       <p style="font-size: 12px;"><i>**If you didn't register with us feel free to ignore this mail</i></p>
 
     </div>
     <div style="width: 100%;height: 50px;background: #00695c;position: absolute;bottom: 0;margin:0;">
-      <p style="color: #cfd8dc;font-size: 14px;text-align: center; margin:0; line-height: 50px">Not a member?<span style="color: white;cursor: pointer;"><a href="${config.host}/users/register" style="text-decoration: none;color: inherit;"> Sign up now </a></span></p>
+      <p style="color: #cfd8dc;font-size: 14px;text-align: center; margin:0; line-height: 50px">Not a member?<span style="color: white;cursor: pointer;"><a href="${config.host}/auth/register" style="text-decoration: none;color: inherit;"> Sign up now </a></span></p>
       </div>
     </div>
     <div style="color: #aaa;font-size: 14px;text-align: center; padding-top: 15px;">
       <p style="margin:3px; color: #999">In case the button don't work go to :</p>
-      <a href="${config.host}/users/confirmation/${jwt}" style="text-decoration: none;color: inherit;font-size: 10px;">${config.host}/users/confirmation/${jwt}</a>
+      <a href="${config.host}/auth/confirmation/${jwt}" style="text-decoration: none;color: inherit;font-size: 10px;">${config.host}/auth/confirmation/${jwt}</a>
     </div>
   </div>
   </body></html>
   `;
-  // ${config.host}/users/register
-  // ${config.host}/users/confirmation/${jwt}
+  // ${config.host}/auth/register
+  // ${config.host}/auth/confirmation/${jwt}
 
   // text mail data
   const textMail = `
   Hey, ${username}
-  Go to ${config.host}/users/confirmation/${jwt} to verify your Account with ${config.sender} under 1 hour of first Issue of mail.
+  Go to ${config.host}/auth/confirmation/${jwt} to verify your Account with ${config.sender} under 1 hour of first Issue of mail.
   `;
 
   // **********************************************************************************

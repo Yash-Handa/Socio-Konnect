@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <form class="col s12" method="POST" action="/users/login">
+    <form class="col s12" method="POST" action="/auth/login">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <div class="row">
         <div class="input-field col s12">
@@ -55,6 +55,6 @@
     </form>
   </div>
   <div id="footer-box">
-    <p class="footer-text">Not a member?<span class="sign-up"><a href="/users/register"> Sign up now </a></span></p>
+    <p class="footer-text">Not a member?<span class="sign-up"><a href="/auth/register"> Sign up now </a></span></p>
   </div>
 </div>

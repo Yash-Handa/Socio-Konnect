@@ -2,12 +2,12 @@ const express = require('express');
 const debug = require('debug')('SignIn-SignUp:user');
 const passport = require('passport');
 
-const validator = require('../middlewares/users/validator');
-const saveUser = require('../DB/createUsers');
+const validator = require('../../middlewares/auth/validator');
+const saveUser = require('../../DB/createUsers');
 
 // auth and logins
-const emailVerifier = require('./auth/email');
-const googleAuth = require('./auth/google');
+const emailVerifier = require('./email');
+const googleAuth = require('./google');
 
 const router = express.Router();
 
@@ -35,7 +35,7 @@ router.post('/login',
   },
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    failureRedirect: '/auth/login',
     failureFlash: true,
   }));
 
@@ -62,7 +62,7 @@ router.post('/register', validator, (req, res, next) => {
     saveUser(req.body.username, req.body.email, req.body.password)
       .then(() => {
         req.flash('email', req.body.email);
-        res.status(304).redirect('/users/emailPrompt');
+        res.status(304).redirect('/auth/emailPrompt');
       })
       .catch(err => {
         debug(err);
@@ -74,7 +74,7 @@ router.post('/register', validator, (req, res, next) => {
 router.get('/logout', (req, res) => {
   req.logOut();
   req.flash('success_msg', 'You are logged out');
-  res.status(301).redirect('/users/login');
+  res.status(301).redirect('/auth/login');
 });
 
 emailVerifier(router);

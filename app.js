@@ -7,7 +7,7 @@ const path = require('path');
 const connectDB = require('./DB/connect');
 const appMiddleware = require('./middlewares/appMiddleware');
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth/signInSignUp');
 
 const app = express();
 
@@ -19,7 +19,7 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
 // add global middlewares to the app instance
 appMiddleware(app, connectDB);
 
-app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
