@@ -4,7 +4,10 @@ const passport = require('passport');
 
 const validator = require('../middlewares/users/validator');
 const saveUser = require('../DB/createUsers');
+
+// auth and logins
 const emailVerifier = require('./auth/email');
+const googleAuth = require('./auth/google');
 
 const router = express.Router();
 
@@ -60,9 +63,6 @@ router.post('/register', validator, (req, res, next) => {
       .then(() => {
         req.flash('email', req.body.email);
         res.status(304).redirect('/users/emailPrompt');
-        // req.flash('success_msg', 'You are registered and can logIn');
-        // req.flash('email', req.body.email);
-        // res.status(304).redirect('/users/login');
       })
       .catch(err => {
         debug(err);
@@ -78,5 +78,6 @@ router.get('/logout', (req, res) => {
 });
 
 emailVerifier(router);
+googleAuth(router);
 
 module.exports = router;

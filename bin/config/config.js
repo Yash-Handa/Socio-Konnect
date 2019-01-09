@@ -17,6 +17,8 @@ const config = {
   dbPass: process.env.DB_PASS,
   dbUser: process.env.DB_USER,
   jwtSecret: process.env.JWT_SECRET,
+  googleId: process.env.GOOGLE_ID,
+  googleSecret: process.env.GOOGLE_SECRET,
 };
 
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;

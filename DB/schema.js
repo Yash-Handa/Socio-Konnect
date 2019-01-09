@@ -25,6 +25,8 @@ const userSchema = new Schema({
     type: Boolean,
     default: true,
   },
+
+  // for providing multi-platform combination
   google: {},
   facebook: {},
   twitter: {},
@@ -32,6 +34,14 @@ const userSchema = new Schema({
   linkedin: {},
   pinterest: {},
   instagram: {},
+
+  // no need to use 'provider' for multi-platform combination
+  provider: {
+    type: String,
+    required: true,
+    default: 'local',
+    enum: ['local', 'google', '3'],
+  },
 });
 
 

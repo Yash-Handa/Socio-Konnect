@@ -3,6 +3,7 @@ const User = require('../../DB/schema');
 
 // strategies
 const local = require('./localStrategy');
+const google = require('./googleStrategy');
 
 module.exports = app => {
   app.use(passport.initialize());
@@ -10,6 +11,7 @@ module.exports = app => {
 
   // strategies
   local(passport);
+  google(passport);
 
   // serializing users after the strategies are loaded
   passport.serializeUser((user, done) => {
