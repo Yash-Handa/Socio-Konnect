@@ -12,30 +12,30 @@
   {{> validation}}
   <div class="row set">
     <div id="auth">
-      <div class="button google">
+      <a href="/auth/google" class="button google">
         <p class="btnText">Google</p>
         <div class="btnTwo">
           <p class="btnText2"><i class="fab fa-google"></i></p>
         </div>
-      </div>
-      <div class="button facebook">
+      </a>
+      <a href="/auth/facebook" class="button facebook">
         <p class="btnText">Facebook</p>
         <div class="btnTwo">
           <p class="btnText2"><i class="fab fa-facebook-f"></i></p>
         </div>
-      </div>
-      <div class="button github">
+      </a>
+      <a href="/auth/github" class="button github">
         <p class="btnText">Github</p>
         <div class="btnTwo">
           <p class="btnText2"><i class="fab fa-github"></i></p>
         </div>
-      </div>
-      <div class="button linkedin">
+      </a>
+      <a href="/auth/linkedin" class="button linkedin">
         <p class="btnText">Linkedin</p>
         <div class="btnTwo">
           <p class="btnText2"><i class="fab fa-linkedin-in"></i></p>
         </div>
-      </div>
+      </a>
     </div>
     <form class="col s12" method="POST" action="/auth/login">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
