@@ -40,7 +40,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     default: 'local',
-    enum: ['local', 'google', 'facebook', 'github'],
+    enum: ['local', 'google', 'facebook', 'github', 'linkedin'],
   },
 });
 

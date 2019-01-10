@@ -23,6 +23,8 @@ const config = {
   facebookSecret: process.env.FACEBOOK_SECRET,
   githubId: process.env.GITHUB_ID,
   githubSecret: process.env.GITHUB_SECRET,
+  linkedinId: process.env.LINKEDIN_ID,
+  linkedinSecret: process.env.LINKEDIN_SECRET,
   host: process.env.DEV_HOST,
   yahooUser: process.env.DEV_EMAIL,
   yahooPass: process.env.DEV_EMAIL_PASS,

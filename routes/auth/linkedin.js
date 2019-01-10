@@ -1,11 +1,11 @@
 const passport = require('passport');
 
 module.exports = router => {
-  router.get('/github',
-    passport.authenticate('github'));
+  router.get('/linkedin',
+    passport.authenticate('linkedin'));
 
-  router.get('/github/callback', (req, res, next) => {
-    passport.authenticate('github', {
+  router.get('/linkedin/callback', (req, res, next) => {
+    passport.authenticate('linkedin', {
       successRedirect: '/dashboard',
       failureRedirect: '/auth/login',
       failureFlash: true,

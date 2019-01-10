@@ -10,6 +10,7 @@ const emailVerifier = require('./email');
 const googleAuth = require('./google');
 const facebookAuth = require('./facebook');
 const githubAuth = require('./github');
+const linkedinAuth = require('./linkedin');
 
 const router = express.Router();
 
@@ -84,5 +85,6 @@ emailVerifier(router);
 googleAuth(router);
 facebookAuth(router);
 githubAuth(router);
+linkedinAuth(router);
 
 module.exports = router;

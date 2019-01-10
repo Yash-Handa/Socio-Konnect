@@ -1,40 +1,40 @@
-const GitHubStrategy = require('passport-github').Strategy;
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
 const config = require('../../bin/config/config');
 const User = require('../../DB/schema');
 
 function extras(data, token) {
   const user = {};
-  user.picture = data.avatar_url;
+  user.picture = data.pictureUrl;
   user.accessToken = token;
   user.id = data.id;
-  user.node = data.node_id;
-  user.profile = data.html_url;
-  user.location = data.location;
-  // user.public_repos = data.public_repos;
-  // user.followers = data.followers;
-  // user.following = data.following;
-  // user.bio = data.bio;
+  // user.profile = data.publicProfileUrl;
+  // user.location = data.location;
+  // user.positions = data.positions;
+  // user.numConnections = data.numConnections;
+  // user.industry = data.industry;
+  // user.headline = data.headline;
   return user;
 }
 
 module.exports = passport => {
-  passport.use(new GitHubStrategy(
+  passport.use(new LinkedInStrategy(
     {
-      clientID: config.githubId,
-      clientSecret: config.githubSecret,
-      callbackURL: `${config.host}/auth/github/callback`,
-      scope: 'user:email',
+      clientID: config.linkedinId,
+      clientSecret: config.linkedinSecret,
+      callbackURL: `${config.host}/auth/linkedin/callback`,
+      scope: ['r_emailaddress', 'r_basicprofile'],
+      state: true,
       passReqToCallback: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
       // console.log(profile);
       // done(null, profile);
 
-      // check if email exist in the github id or not
+      // check if email exist in the linkedin id or not
       if (profile.emails.length === 0) {
         return done(null, false, {
-          message: 'No email is Registered with your Github account or it\'s not Public',
+          message: 'No email is Registered with your LinkedIn account',
         });
       }
 
@@ -47,18 +47,18 @@ module.exports = passport => {
               email: profile.emails[0].value,
               provider: profile.provider,
               // eslint-disable-next-line no-underscore-dangle
-              github: extras(profile._json, accessToken),
+              linkedin: extras(profile._json, accessToken),
             });
 
             createUser.save((err, savedUser) => {
               if (err) return done(err);
               done(null, savedUser);
             });
-          } else if (user.github) {
+          } else if (user.linkedin) {
             // eslint-disable-next-line eqeqeq
-            if (user.github.id == profile.id) return done(null, user);
+            if (user.linkedin.id == profile.id) return done(null, user);
           } else {
-            // when email is present but not registered with github
+            // when email is present but not registered with linkedin
             return done(null, false, {
               message: `The email is registered with, ${user.provider.toUpperCase()} sign in`,
             });
