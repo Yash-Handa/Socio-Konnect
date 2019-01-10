@@ -9,6 +9,7 @@ const saveUser = require('../../DB/createUsers');
 const emailVerifier = require('./email');
 const googleAuth = require('./google');
 const facebookAuth = require('./facebook');
+const githubAuth = require('./github');
 
 const router = express.Router();
 
@@ -82,5 +83,6 @@ router.get('/logout', (req, res) => {
 emailVerifier(router);
 googleAuth(router);
 facebookAuth(router);
+githubAuth(router);
 
 module.exports = router;

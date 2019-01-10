@@ -16,6 +16,12 @@ module.exports = function (passport) {
             });
           }
 
+          if (user.provider !== 'local') {
+            return done(null, false, {
+              message: `The email is registered with, ${user.provider.toUpperCase()} sign in`,
+            });
+          }
+
           // match password
           bcryptjs.compare(password, user.password, (err, isMatch) => {
             if (err) return done(err);
