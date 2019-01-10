@@ -19,6 +19,12 @@ const config = {
   jwtSecret: process.env.JWT_SECRET,
   googleId: process.env.GOOGLE_ID,
   googleSecret: process.env.GOOGLE_SECRET,
+  facebookId: process.env.FACEBOOK_ID,
+  facebookSecret: process.env.FACEBOOK_SECRET,
+  host: process.env.DEV_HOST,
+  yahooUser: process.env.DEV_EMAIL,
+  yahooPass: process.env.DEV_EMAIL_PASS,
+  sender: process.env.EMAIL_SENDER,
 };
 
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;

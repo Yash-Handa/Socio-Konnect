@@ -10,6 +10,7 @@ function extras(data, token) {
   user.gender = data.gender;
   user.locale = data.locale;
   user.accessToken = token;
+  user.id = data.sub;
   return user;
 }
 
@@ -17,7 +18,7 @@ module.exports = passport => {
   passport.use(new GoogleStrategy({
     clientID: config.googleId,
     clientSecret: config.googleSecret,
-    callbackURL: 'http://localhost:1998/auth/google/callback',
+    callbackURL: `${config.host}/auth/google/callback`,
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
     passReqToCallback: true,
   },
@@ -27,14 +28,14 @@ module.exports = passport => {
 
     // check if email exist in the google id or not
     if (profile.emails.length === 0) {
-      return done(null, undefined, {
-        message: 'No email is Registered with Google',
+      return done(null, false, {
+        message: 'No email is Registered with your Google account',
       });
     }
 
     // check if the email is verified by the google
     if (profile.emails[0].verified === false) {
-      return done(null, undefined, {
+      return done(null, false, {
         message: `Verify your email ${profile.emails[0].value} with Google`,
       });
     }
@@ -53,13 +54,14 @@ module.exports = passport => {
 
           createUser.save((err, savedUser) => {
             if (err) return done(err);
-            // eslint-disable-next-line no-underscore-dangle
-            req.from = 'register';
             done(null, savedUser);
           });
-        } else {
-          req.from = 'login';
-          done(null, user);
+        } else if (user.google.id === profile.id) return done(null, user);
+        else {
+          // when email is present but not registered with facebook
+          return done(null, false, {
+            message: `The email is registered with, ${user.provider.toUpperCase()} sign in`,
+          });
         }
       })
       .catch(err => done(err));

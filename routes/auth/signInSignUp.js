@@ -8,6 +8,7 @@ const saveUser = require('../../DB/createUsers');
 // auth and logins
 const emailVerifier = require('./email');
 const googleAuth = require('./google');
+const facebookAuth = require('./facebook');
 
 const router = express.Router();
 
@@ -45,6 +46,7 @@ router.get('/register', (req, res) => {
     csrfToken: req.csrfToken(),
     email: res.locals.email,
     error_msg: res.locals.error_msg,
+    error: res.locals.error,
   });
 });
 
@@ -79,5 +81,6 @@ router.get('/logout', (req, res) => {
 
 emailVerifier(router);
 googleAuth(router);
+facebookAuth(router);
 
 module.exports = router;

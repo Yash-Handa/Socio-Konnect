@@ -6,10 +6,11 @@ module.exports = router => {
       scope: ['profile', 'email'],
     }));
 
-  router.get('/google/callback',
+  router.get('/google/callback', (req, res, next) => {
     passport.authenticate('google', {
       successRedirect: '/dashboard',
       failureRedirect: '/auth/login',
       failureFlash: true,
-    }));
+    })(req, res, next);
+  });
 };

@@ -12,7 +12,6 @@ const express = require('express');
 
 const security = require('./security/globalSecurity');
 const passportSetup = require('./passport/passportSetup');
-const config = require('../bin/config/config');
 
 // gzip compression of response object using Compression
 function shouldCompress(req, res) {
@@ -56,7 +55,7 @@ function setup(app, connectDB) {
       httpOnly: true,
       maxAge: 3600000, // 1hr
       // secure: true, // in production (can use config directory)
-      domain: config.host,
+      // domain: config.host,
       path: '/',
     },
   }));
