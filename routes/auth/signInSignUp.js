@@ -4,6 +4,7 @@ const passport = require('passport');
 
 const validator = require('../../middlewares/auth/validator');
 const saveUser = require('../../DB/createUsers');
+const logOutRemove = require('./logOutRemove');
 
 // auth and logins
 const emailVerifier = require('./email');
@@ -49,6 +50,7 @@ router.get('/register', (req, res) => {
     email: res.locals.email,
     error_msg: res.locals.error_msg,
     error: res.locals.error,
+    success_msg: res.locals.success_msg,
   });
 });
 
@@ -75,11 +77,7 @@ router.post('/register', validator, (req, res, next) => {
   }
 });
 
-router.get('/logout', (req, res) => {
-  req.logOut();
-  req.flash('success_msg', 'You are logged out');
-  res.status(301).redirect('/auth/login');
-});
+logOutRemove(router);
 
 emailVerifier(router);
 googleAuth(router);
