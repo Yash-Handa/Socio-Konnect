@@ -1,12 +1,14 @@
 # SignIn-SignUp
+<div>
+<span align="left">
+  <img alt="Tour" style="float: left" width="45%" title="Tour of the App" src="/readme content/tour.gif">
+</span>
 
-<p align="left">
-  <img alt="Tour" title="Tour of the App" src="/readme content/tour.gif">
-</p>
+<span align="right">
+  <img alt="Register" width="45%" style="float: right" title="Register to the App" src="/readme content/register.gif">
+</span>
 
-<p align="right">
-  <img alt="Register" title="Register to the App" src="/readme content/register.gif">
-</p>
+</div><br><br>
 
 A fun project which provides Complete **Authentication and Registration** of all users with:
 
