@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   M.Tabs.init(tabs, {
     swipeable: true,
-    responsiveThreshold: '200px',
+    responsiveThreshold: '100px',
   });
 
   M.Tooltip.init(tips, {});
