@@ -1,24 +1,66 @@
-# Express-Dev-Env
+# SignIn-SignUp
 
-The development environment for Express with Front end boiler plates
+<p align="left">
+  <img alt="Tour" title="Tour of the App" src="/readme content/tour.gif">
+</p>
 
->## The app is made using Express generator(v 4.16.0) with handlebars and runs on port 1998
+<p align="right">
+  <img alt="Register" title="Register to the App" src="/readme content/register.gif">
+</p>
 
-## Environment Variables
+A fun project which provides Complete **Authentication and Registration** of all users with:
 
-One of the best way to keep your secret keys, api keys, DB username and passwords safe and together is to store them in a `.env` file use it to manipulate node's `process.env` variable. This template also adopts this approach. Follow the steps below:
+* **[Google](https://www.npmjs.com/package/passport-google-oauth)**
+* **[Facebook](https://www.npmjs.com/package/passport-facebook)**
+* **[GitHub](https://www.npmjs.com/package/passport-github)**
+* **[LinkedIn](https://www.npmjs.com/package/passport-linkedin-oauth2)**
+* **[Local Email](https://www.npmjs.com/package/passport-local)**
 
-1. locate the `.env.set` file in bin folder i.e., `./bin/.env.set`
-2. change the filename from `.env.set` to `.env`
-3. Add all your secret keys, api keys, DB username and passwords in this file.
-4. These keys will be then set to nodes env variable (follow the format: `DB_NAME = "~"` and replace ~ with key values.)
-5. To access these values in a file use: see **Config object** below.
+### SERVER
 
->note: `.env` files contain crucial information and are **not uploaded to GitHub**
+The Server is made on `Node.js` (v10.12.0)  
+`Express.js` is used as the server framework (v4.16.0)
+
+### DATABASE
+
+The database used is `MongoDB` and is hosted on a `MongoDB Atlas Cluster`.  
+`Mongoose.js` is used as an ODM (v5.4.1)
+
+### FRONT-END
+
+The Front-end is made with `Vanilla HTML, CSS and JS`.  
+`Materialize.css` is used for better styling of the project.  
+`Font Awesome` for icons  
+`and Animate.css` for animations  
+
+### SECURITY
+
+Many security precautions have been taken:
+
+* **bcryptjs**: For secure password saving in the Database.
+* **csurf**: For protection against CSRF attack on Forms and fetch requests.
+* **helmet**: For protection against common Security Vulnerabilities inExpress framework.
+* **jsonwebtoken(JWT)**: For Secure Email Verification Links.
+* **Content Security Policy**: For Secure Content Delivery from the server.
+* **limiter**: For Limiting the access to data from a particular client (150 requests per hour).
+
+### AUTHENTICATION
+
+`Passport.js` has been integrated into the application for **Secure Authentication** of User Credentials **over OAuth 2.0** from `Google`, `Facebook`, `GitHub`, `LinkedIn` and `Local Email Verification`.
+
+### MISC
+
+* **connect-mongo** has been used for **storing users** sessions into the database which is important when the application have **multiple instances** running in production
+  * Would replace with `connect-redis` for in-memory session storage, better performance.
+* **nodemailer** has been used for sending emails(**verification emails**) to the new users.
+
+______
+
+## For Developers
 
 ## Config Object
 
-the file `./bin/config/config` exports the config object which is a **cover over the .env file** for better protections and encapsulation
+The file `./bin/config/config` exports the config object which is a **cover over the .env file** for better protections and encapsulation (Create a `.env` file first in `bin folder`).
 the `./bin/config` directory also have the `development.js`, `production.js` and `testing.js` files for fine tuning the config object in the respective NODE_ENV
 for more info open these files and go through the comments.
 
@@ -32,7 +74,7 @@ For security **Helmet** is used with its defaults and additionally **Content Sec
 Additionally other mechanisms are also used:-
 
 * **csurf** - CSRF protection is applied to the entire project. If CSRF is to be enabled only on some routes then go to `./middlewares/security/globalSecurity.js` and disable it and import `./middlewares/security/csurfSetup.js` to the file where it is required. for more details refer [csurf](https://www.npmjs.com/package/csurf).
-* **limiter** - to block a user from accessing a route more than a given no. of time in a set duration(eg 150 requests per hour). limiter is set but **NEVER USED**. For more details refer [limiter](https://www.npmjs.com/package/limiter). How to use:-
+* **limiter** - to block a user from accessing a route more than a given no. of time in a set duration(eg 150 requests per hour). For more details refer [limiter](https://www.npmjs.com/package/limiter). How to use:-
   * require the limiterSetup file: `./middlewares/security/limiterSetup.js`
   * this will return an express middleware which can be used on any route, router or on app.
 
@@ -54,12 +96,6 @@ The response object is gzip compressed using [compression](https://www.npmjs.com
 
 >Use `npm run --silent <your-script>` to hide the internal logs from your terminal window.<br>eg: `npm run --silent start-w` or `npm run --silent start-w-lite`
 
-## Notes
-
-* Use as many Asynchronous functions as possible to reduce the server response time and occupance.
-* Deal properly with errors or the server will crash use try/catch(for synchronous) and Promises(for asynchronous) errors with the next(err) method.
-* Read this for production and devops ready configurations [Things to do in your environment / setup](https://expressjs.com/en/advanced/best-practice-performance.html#set-node_env-to-production)
-
 ## To-Do
 
 * Use cookies securely
@@ -68,3 +104,7 @@ The response object is gzip compressed using [compression](https://www.npmjs.com
   * CORS allows other servers and domains to access/request your content. It is **restricted by default**
   * A possible use case could a public API project which is used by others to use your content.
   * you could use [cors](https://www.npmjs.com/package/cors) library to implement it.
+
+<p align="center">
+  <img alt="kitten" src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
+</p>
