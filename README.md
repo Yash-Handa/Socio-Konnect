@@ -60,13 +60,13 @@ ______
 
 ## For Developers
 
-## Config Object
+### Config Object
 
 The file `./bin/config/config` exports the config object which is a **cover over the .env file** for better protections and encapsulation (Create a `.env` file first in `bin folder`).
 the `./bin/config` directory also have the `development.js`, `production.js` and `testing.js` files for fine tuning the config object in the respective NODE_ENV
 for more info open these files and go through the comments.
 
-## Express Security
+### Express Security
 
 For security **Helmet** is used with its defaults and additionally **Content Security Policy**
 
@@ -80,11 +80,11 @@ Additionally other mechanisms are also used:-
   * require the limiterSetup file: `./middlewares/security/limiterSetup.js`
   * this will return an express middleware which can be used on any route, router or on app.
 
-## Response Compression
+### Response Compression
 
 The response object is gzip compressed using [compression](https://www.npmjs.com/package/compression). To request for an uncompressed response use **x-no-compression** in the request header.
 
-## NPM Commands
+### NPM Commands
 
 * `npm install` - installs all the dependencies
 * `npm start` - lints the server and client script, starts eslint on watch mode on server scripts and starts the project at **localhost:1998** in debug mode.
@@ -98,7 +98,7 @@ The response object is gzip compressed using [compression](https://www.npmjs.com
 
 >Use `npm run --silent <your-script>` to hide the internal logs from your terminal window.<br>eg: `npm run --silent start-w` or `npm run --silent start-w-lite`
 
-## To-Do
+### To-Do
 
 * Use cookies securely
 * Add proper Logging ([Bunyan](https://github.com/trentm/node-bunyan) or [Winston](https://github.com/winstonjs/winston))
