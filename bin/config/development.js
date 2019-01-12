@@ -9,4 +9,6 @@
  * all key value pairs in the exported object will override the config object's keys in config.js
 */
 
-module.exports = {};
+module.exports = {
+  host: process.env.DEV_HOST,
+};

@@ -10,5 +10,5 @@
 */
 
 module.exports = {
-
+  host: process.env.PROD_HOST,
 };
