@@ -54,6 +54,16 @@ html {
   height: 40px;
 }
 
+h1 .home {
+  line-height: 40px;
+  margin-right: 17px;
+  margin-left: 0;
+}
+
+.home:hover {
+  color: #fff;
+}
+
 #bottom-head::after {
   content: '';
   width: 0px;
@@ -76,7 +86,7 @@ html {
   font-size: 24px;
   font-weight: 300;
   color: #cfd8dc;
-  line-height: 35px;
+  line-height: 40px;
 }
 
 .box button {
@@ -159,5 +169,9 @@ a:link, a:visited {
 
   form .row {
     margin: 5px;
+  }
+
+  h1 .home {
+    margin-right: 10px;
   }
 }

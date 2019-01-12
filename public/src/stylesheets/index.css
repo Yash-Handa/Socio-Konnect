@@ -1,0 +1,335 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+html {
+  background-color: #142834;
+  font-family: "Roboto";
+}
+
+/* BOX LOGIN */
+.box {
+  position: relative;
+  margin: auto;
+  top: 40px;
+  left: 0;
+  z-index: 200;
+  right: 0;
+  width: 400px;
+  color: #666;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  overflow: auto;
+}
+
+#header {
+  background: #009688;
+  position: relative;
+  height: 150px;
+  width: 100%;
+}
+
+#cont-lock {
+  width: 100%;
+  height: 110px;
+  position: relative;
+}
+
+img {
+  max-height: 90px;
+  margin: 0 auto;
+  display: block;
+}
+
+#bottom-head {
+  position: relative;
+  background: #00796b;
+  height: 40px;
+}
+
+#bottom-head::after {
+  content: '';
+  width: 0px;
+  height: 0px;
+  display: block;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 7px solid rgba(255, 255, 255, 0.9);
+  border-right: 7px solid rgba(0, 0, 0, 0);
+  border-left: 7px solid rgba(0, 0, 0, 0);
+  border-top: 7px solid rgba(0, 0, 0, 0);
+}
+
+.box h1 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 300;
+  color: #cfd8dc;
+  line-height: 35px;
+}
+
+.tabs {
+  background-color: #e9eaec;
+}
+
+.tabs .tab a {
+  color: #00968798;
+}
+
+.tabs .tab a.active, .tabs .tab a:hover {
+  color: #009688;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+  background-color: #00968720;
+}
+
+.tabs .indicator {
+  background-color: #009688;
+}
+
+.box #go {
+  background: #cfd8dc;
+  display: block;
+  border: 0;
+  color: #009688;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  width: 47%;
+  margin: 20px auto 40px;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+
+.box #go:active {
+  background: #009688;
+  color: #263238;
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+}
+
+.box #go:hover {
+  background: #009688;
+  color: #FFF;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.box p {
+  font-size: 14px;
+  text-align: center;
+}
+
+.logos {
+  width: 80%;
+  margin: 27px auto 23px !important;
+}
+
+#footer-box {
+  width: 100%;
+  height: 50px;
+  background: #00695c;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer-text {
+  color: #cfd8dc;
+}
+
+.social-btns .btn,
+.social-btns .btn:before,
+.social-btns .btn .logo {
+  transition: all 0.35s;
+  transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+
+.social-btns .btn:before {
+  top: 90%;
+  left: -110%;
+}
+
+.social-btns .btn .logo {
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
+}
+
+.social-btns .btn.linkedin:before {
+  background-color: #0274B3;
+}
+
+.social-btns .btn.linkedin .logo {
+  color: #0274B3;
+}
+
+.social-btns .btn.facebook:before {
+  background-color: #3C5A99;
+}
+
+.social-btns .btn.facebook .logo {
+  color: #3C5A99;
+}
+
+.social-btns .btn.mail:before {
+  background-color: rgb(187, 11, 11);
+}
+
+.social-btns .btn.mail .logo {
+  color: rgb(187, 11, 11);
+}
+
+.social-btns .btn.google:before {
+  background-color: #DE5245;
+}
+
+.social-btns .btn.google .logo {
+  color: #DE5245;
+}
+
+.social-btns .btn.github:before {
+  background-color: #24292E;
+}
+
+.social-btns .btn.github .logo {
+  color: #24292E;
+}
+
+.social-btns .btn:focus:before,
+.social-btns .btn:hover:before {
+  top: -10%;
+  left: -10%;
+}
+
+.social-btns .btn:focus .logo,
+.social-btns .btn:hover .logo {
+  color: #fff;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.social-btns {
+  height: 50px;
+  /* margin: auto; */
+  font-size: 0;
+  text-align: center;
+  /* position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+}
+
+.social-btns .btn {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.952);
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 2px;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28%;
+  box-shadow: 0 3px 15px -5px rgba(0, 0, 0, 0.5);
+  opacity: 0.99;
+}
+
+.social-btns .btn:before {
+  content: '';
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.social-btns .btn .logo {
+  font-size: 38px;
+  vertical-align: middle;
+}
+
+.social-btns .btn.google {
+  animation-delay: 800ms;
+}
+
+.social-btns .btn.facebook {
+  animation-delay: 1000ms;
+}
+
+.social-btns .btn.github {
+  animation-delay: 1200ms;
+}
+
+.social-btns .btn.linkedin {
+  animation-delay: 1400ms;
+}
+
+.social-btns .btn.mail {
+  animation-delay: 1600ms;
+}
+
+.collapsible {
+  box-shadow: none;
+  webkit-box-shadow: none;
+  border: none;
+}
+
+.collapsible-header {
+  background-color: #E8EAEB;
+  border-bottom: 1px solid #aaa;
+}
+
+.server:focus {
+  color: rgba(55, 182, 55, 0.911);
+}
+
+.db:focus {
+  color: rgb(201, 127, 31);
+}
+
+.code:focus {
+  color: rgba(255, 0, 0, 0.911);
+}
+
+.sec:focus {
+  color: rgba(0, 0, 255, 0.911);
+}
+
+#security li {
+  list-style-type: devanagari;
+  list-style-position: outside;
+}
+
+#security {
+  padding-left: 8px;
+}
+
+.maker {
+  font-size: 12px !important;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media only screen and (max-width: 450px) {
+  .box {
+    top: 10px;
+    width: 90vw;
+    margin-bottom: 10px;
+    overflow: auto;
+  }
+
+  .social-btns {
+    height: 90px;
+  }
+}

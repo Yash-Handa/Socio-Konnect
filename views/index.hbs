@@ -1,7 +1,85 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<i class="fab fa-facebook-f fa-3x"></i>
-<i class="fab fa-google fa-3x"></i>
-<i class="fab fa-github fa-3x"></i>
-<i class="fab fa-twitter fa-3x"></i>
-<i class="fab fa-linkedin-in fa-3x"></i>
+<head>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+
+<div class="box animated fadeInDown">
+  <div id="header">
+    <div id="cont-lock" class="valign-wrapper"><img src="/images/placeholder.png" alt="company logo" class="z-depth-2 circle animated pulse infinite slow"></div>
+    <div id="bottom-head">
+      <h1 class="center-align">SignIn SignUp</h1>
+    </div>
+  </div>
+  {{> validation}}
+  <div class="row">
+    <div class="col s12" style="padding: 0;">
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active" href="#app">App</a></li>
+        <li class="tab col s6"><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div id="app" class="col s12" style="padding: 5%; overflow:scroll;">
+      <h6 class="center-align">Welcome to {{title}} :)</h6>
+      <p>This is a fun project which provides complete <strong>Authentication and Registration</strong> of all users with: </p>
+      <div class="social-btns logos">
+        <span class="btn google animated fadeIn tooltipped" data-position="bottom" data-tooltip="Google">
+          <i class="fab fa-google fa-2x logo"></i>
+        </span>
+        <span class="btn facebook animated fadeIn tooltipped" data-position="top" data-tooltip="Facebook">
+          <i class="fab fa-facebook-f fa-2x logo"></i>
+        </span>
+        <span class="btn github animated fadeIn tooltipped" data-position="bottom" data-tooltip="GitHub">
+          <i class="fab fa-github fa-2x logo"></i>
+        </span>
+        <span class="btn linkedin animated fadeIn tooltipped" data-position="top" data-tooltip="LinkedIn">
+          <i class="fab fa-linkedin-in fa-2x logo"></i>
+        </span>
+        <span class="btn mail animated fadeIn tooltipped" data-position="bottom" data-tooltip="Email">
+          <i class="fas fa-at fa-2x logo"></i>
+        </span>
+      </div>
+      <div>
+        <a href="/auth/login" id="go" class="left">
+          <div class="center-align">Login</div>
+        </a>
+        <a href="/auth/register" id="go" class="right">
+          <div class="center-align">Register</div>
+        </a>
+      </div>
+    </div>
+    <div id="about" class="col s12" style="padding: 5%; overflow:scroll;">
+      <h6 class="center-align">Welcome to {{title}} :)</h6>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header server"><i class="fas fa-server fa-fw"></i>Server</div>
+          <div class="collapsible-body"><span>The Server is made on <strong>Node.js</strong>.<br> <strong>Express.js</strong> is used as the server framework</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header db"><i class="fas fa-database fa-fw"></i>Database</div>
+          <div class="collapsible-body"><span>The database used is <strong>MongoDB</strong> and is hosted on <strong>MongoDB Atlas</strong>.<br><strong>Mongoose.js</strong> is used as an ODM</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header code"><i class="fas fa-code fa-fw"></i>Front-end</div>
+          <div class="collapsible-body"><span>The Front-end is made with <strong>Vanilla HTML, CSS and JS.</strong><br><strong>Materialize.css</strong> is used for better styling of the project.<br><strong>Font Awesome</strong> for icons<br> and <strong>Animate.css</strong> for animations</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header sec"><i class="fas fa-shield-alt fa-fw"></i>Security</div>
+          <div class="collapsible-body"><span><ul id="security">
+            <li><strong>bcryptjs</strong>: For secure password saving in the Database</li>
+            <li><strong>csurf</strong>: For protection against CSRF attack on Forms and fetch requests</li>
+            <li><strong>helmet</strong>: For protection against common Security Vulnerabilities inExpress framework</li>
+            <li><strong>jsonwebtoken</strong>: For Secure Email Verification Links</li>
+            <li><strong>Content Security Policy</strong>: For Secure Content Delivery from the server</li>
+            <li><strong>limiter</strong>: For Limiting the access to data from a particular client (150 requests per hour)</li>
+          </ul></span></div>
+        </li>
+      </ul>
+      <p style="margin-top: 25px; font-size: 14px">For more info <a href="https://github.com/Yash-Handa/SignIn-SignUp" target="_blank"><u>View on GitHub</u></a>.</p>
+      <p class="maker">Another thing from <a href="https://github.com/Yash-Handa" target="_blank"><u>Yash Handa</u></a>.</p>
+    </div>
+  </div>
+  <div id="footer-box">
+    <p class="footer-text">{{title}} &#169 2019</p>
+  </div>
+</div>
+
+<script src="/javascript/index.js"></script>

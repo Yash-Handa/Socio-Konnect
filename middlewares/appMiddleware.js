@@ -7,7 +7,7 @@ const compression = require('compression');
 const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
-const MongoStore = require('connect-mongo')(session);
+// const MongoStore = require('connect-mongo')(session);
 const express = require('express');
 
 const security = require('./security/globalSecurity');
@@ -25,6 +25,7 @@ function shouldCompress(req, res) {
 
 // MongoStore.on('create', (id) => console.log('session id', id));
 
+// eslint-disable-next-line no-unused-vars
 function setup(app, connectDB) {
   // compressing the response object
   app.use(compression({
@@ -48,7 +49,8 @@ function setup(app, connectDB) {
   // added express-session for persistent logins
   app.use(session({
     secret: 'mySecretCookieSalt',
-    store: new MongoStore({ mongooseConnection: connectDB.connection, clear_interval: 3600 }),
+    // store: new MongoStore({ mongooseConnection: connectDB.connection, clear_interval: 3600 }),
+    // un comment the above line when using connect-mongo gor multiple processes
     resave: true,
     saveUninitialized: false,
     cookie: {

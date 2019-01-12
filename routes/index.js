@@ -7,7 +7,10 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', (req, res) => {
   // console.log(process.env.SECRET_KEY);
-  res.render('index', { title: 'SignIn-SighUp' });
+  res.render('index', {
+    title: 'SignIn-SignUp',
+    success_msg: res.locals.success_msg,
+  });
 });
 
 router.get('/dashboard', authChecker, (req, res) => {
