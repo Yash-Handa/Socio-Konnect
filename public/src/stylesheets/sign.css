@@ -210,6 +210,10 @@ input[type=password]:not(.browser-default):focus:not([readonly]) {
   color: #bab2df;
 }
 
+form {
+  animation-delay: 1600ms;
+}
+
 a:link, a:visited {
   text-decoration: none;
   color: inherit;
@@ -229,6 +233,9 @@ a:link, a:visited {
   .comp {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
+  }
+  form {
+    animation-delay: 700ms;
   }
 }
 

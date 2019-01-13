@@ -1,4 +1,11 @@
 # Socio Konnect
+
+[![Codeship Status for Yash-Handa/Socio-Konnect](https://app.codeship.com/projects/849adba0-f99d-0136-ae21-1a0cd865de7f/status?branch=master&style=flat-square)](/projects/321418)
+![code size](https://img.shields.io/github/languages/code-size/Yash-Handa/Socio-Konnect.svg?style=flat-square)
+![licence](https://img.shields.io/github/license/Yash-Handa/Socio-Konnect.svg?style=flat-square)
+![dependencies](https://img.shields.io/david/Yash-Handa/Socio-Konnect.svg?style=flat-square)
+![dev-dependencies](https://img.shields.io/david/dev/Yash-Handa/Socio-Konnect.svg?style=flat-square)
+
 <div>
 <span align="left">
   <img alt="Tour" style="float: left" width="45%" title="Tour of the App" src="/readme content/tour.gif">
@@ -8,7 +15,7 @@
   <img alt="Register" width="45%" style="float: right" title="Register to the App" src="/readme content/register.gif">
 </span>
 
-</div><br><br>
+</div><br>
 
 A fun project which provides Complete **Authentication and Registration** of all users with:
 

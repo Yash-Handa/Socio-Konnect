@@ -49,18 +49,22 @@
 
 .google {
   background-color: #DE5245;
+  animation-delay: 700ms;
 }
 
 .facebook {
   background-color: #3C5A99;
+  animation-delay: 900ms;
 }
 
 .github {
   background-color: #000000;
+  animation-delay: 1100ms;
 }
 
 .linkedin {
   background-color: #0274B3;
+  animation-delay: 1300ms;
 }
 
 @media (min-width: 992px) {
@@ -88,5 +92,17 @@
   .reg .btnText2 {
     margin-top : 34px !important;
     font-size: 20px !important;
+  }
+  .google {
+    animation-delay: 1100ms;
+  }
+  .facebook {
+    animation-delay: 1400ms;
+  }
+  .github {
+    animation-delay: 1700ms;
+  }
+  .linkedin {
+    animation-delay: 2000ms;
   }
 }
