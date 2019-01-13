@@ -1,11 +1,11 @@
 {
-  "name": "signin-signup",
+  "name": "socio-konnect",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "prestart": "run-s lint-server lint-client",
     "start2": "node ./bin/www",
-    "debug": "set DEBUG=SignIn-SignUp:* & npm run start2",
+    "debug": "set DEBUG=SocioKonnect:* & npm run start2",
     "start": "run-p lint-w debug",
     "start-w": "nodemon --exec run-s prestart debug",
     "start-w-lite": "nodemon --exec npm run debug",

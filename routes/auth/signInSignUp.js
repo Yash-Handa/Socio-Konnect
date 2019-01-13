@@ -1,5 +1,5 @@
 const express = require('express');
-const debug = require('debug')('SignIn-SignUp:user');
+const debug = require('debug')('SocioKonnect:user');
 const passport = require('passport');
 
 const validator = require('../../middlewares/auth/validator');

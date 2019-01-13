@@ -1,4 +1,4 @@
-# SignIn-SignUp
+# Socio Konnect
 <div>
 <span align="left">
   <img alt="Tour" style="float: left" width="45%" title="Tour of the App" src="/readme content/tour.gif">

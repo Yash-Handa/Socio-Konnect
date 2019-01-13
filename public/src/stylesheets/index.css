@@ -194,12 +194,12 @@ img {
   color: #3C5A99;
 }
 
-.social-btns .btn.mail:before {
-  background-color: rgb(187, 11, 11);
+.social-btns .btn.twitter:before {
+  background-color: #3EC6EA;
 }
 
-.social-btns .btn.mail .logo {
-  color: rgb(187, 11, 11);
+.social-btns .btn.twitter .logo {
+  color: #3EC6EA;
 }
 
 .social-btns .btn.google:before {
@@ -289,7 +289,7 @@ img {
   animation-delay: 1400ms;
 }
 
-.social-btns .btn.mail {
+.social-btns .btn.twitter {
   animation-delay: 1600ms;
 }
 
