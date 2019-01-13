@@ -1,7 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
-html {
+html, body {
   background-color: #142834;
   font-family: "Roboto";
+  height: 100%;
+}
+
+.main-cover {
+  /* The image used */
+  background-image: url("/images/background.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
 }
 
 /* BOX LOGIN */
@@ -15,14 +31,14 @@ html {
   width: 400px;
   color: #666;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #E8EAEB;
   margin-bottom: 40px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   overflow: auto;
 }
 
 #header {
-  background: #009688;
+  background: #74428D;
   position: relative;
   height: 150px;
   width: 100%;
@@ -42,7 +58,7 @@ img {
 
 #bottom-head {
   position: relative;
-  background: #00796b;
+  background: #472C66;
   height: 40px;
 }
 
@@ -63,11 +79,12 @@ img {
 }
 
 .box h1 {
+  margin-left: 17px;
   margin-top: 0;
   font-size: 24px;
   font-weight: 300;
-  color: #cfd8dc;
-  line-height: 35px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 40px;
 }
 
 .tabs {
@@ -75,26 +92,26 @@ img {
 }
 
 .tabs .tab a {
-  color: #00968798;
+  color: #472C6698;
 }
 
 .tabs .tab a.active, .tabs .tab a:hover {
-  color: #009688;
+  color: #472C66;
 }
 
 .tabs .tab a:focus, .tabs .tab a:focus.active {
-  background-color: #00968720;
+  background-color: #472C6620;
 }
 
 .tabs .indicator {
-  background-color: #009688;
+  background-color: #472C66;
 }
 
 .box #go {
   background: #cfd8dc;
   display: block;
   border: 0;
-  color: #009688;
+  color: rgb(94, 45, 119);
   padding: 10px;
   font-size: 16px;
   font-weight: 300;
@@ -110,13 +127,13 @@ img {
 }
 
 .box #go:active {
-  background: #009688;
+  background: #74428D;
   color: #263238;
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
 
 .box #go:hover {
-  background: #009688;
+  background: #74428D;
   color: #FFF;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
@@ -135,13 +152,13 @@ img {
 #footer-box {
   width: 100%;
   height: 50px;
-  background: #00695c;
+  background: #472C66;
   position: absolute;
   bottom: 0;
 }
 
 .footer-text {
-  color: #cfd8dc;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .social-btns .btn,
@@ -331,5 +348,9 @@ a:link, a:visited {
 
   .social-btns {
     height: 90px;
+  }
+
+  .main-cover {
+    background-image: none;
   }
 }

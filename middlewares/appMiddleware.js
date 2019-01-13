@@ -12,6 +12,7 @@ const express = require('express');
 
 const security = require('./security/globalSecurity');
 const passportSetup = require('./passport/passportSetup');
+const helmetSetup = require('./security/helmetSetup');
 
 // gzip compression of response object using Compression
 function shouldCompress(req, res) {
@@ -27,6 +28,7 @@ function shouldCompress(req, res) {
 
 // eslint-disable-next-line no-unused-vars
 function setup(app, connectDB) {
+  helmetSetup(app);
   // compressing the response object
   app.use(compression({
     filter: shouldCompress,

@@ -1,7 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
-html {
+html, body {
   background-color: #142834;
   font-family: "Roboto";
+  height: 100%;
+}
+
+.main-cover {
+  /* The image used */
+  background-image: url("/images/background.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
 }
 
 /* BOX LOGIN */
@@ -12,7 +28,7 @@ html {
   left: 0;
   z-index: 200;
   right: 0;
-  width: 400px;
+  width: 774px;
   color: #666;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.9);
@@ -22,7 +38,7 @@ html {
 }
 
 #header {
-  background: #009688;
+  background: #74428D;
   position: relative;
   height: 110px;
   width: 100%;
@@ -50,7 +66,7 @@ html {
 
 #bottom-head {
   position: relative;
-  background: #00796b;
+  background: #472C66;
   height: 40px;
 }
 
@@ -85,14 +101,14 @@ h1 .home {
   margin-top: 0;
   font-size: 24px;
   font-weight: 300;
-  color: #cfd8dc;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 40px;
 }
 
 .box button {
   background: #cfd8dc;
   border: 0;
-  color: #009688;
+  color: rgb(94, 45, 119);
   padding: 10px;
   font-size: 16px;
   font-weight: 300;
@@ -107,16 +123,30 @@ h1 .home {
 }
 
 .box button:active {
-  background: #009688;
+  background: #74428D;
   color: #263238;
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
 
 .box button:hover {
-  background: #009688;
+  background: #74428D;
   color: #FFF;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+}
+
+.auth {
+  width: 40% !important;
+}
+
+.auth:first-of-type {
+  margin: 0 3% 0 5% !important;
+}
+
+.auth:last-of-type {
+  width: 43% !important;
+  margin: 0 2% 0 3% !important;
+  padding: 0;
 }
 
 .box p {
@@ -129,14 +159,48 @@ form .row {
 }
 
 .box .set {
-  width: 80%;
+  width: 774px;
   margin-bottom: 100px;
 }
+
+input[type=email]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #74428D;
+  webkit-box-shadow: 0 1px 0 0 #74428D;
+  box-shadow: 0 1px 0 0 #74428D;
+}
+input[type=email]:not(.browser-default):focus:not([readonly]) + label {
+   color: #74428D;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #74428D;
+  webkit-box-shadow: 0 1px 0 0 #74428D;
+  box-shadow: 0 1px 0 0 #74428D;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]) + label {
+   color: #74428D;
+}
+input[type=password]:not(.browser-default):focus:not([readonly]) + label {
+   color: #74428D;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #74428D;
+  webkit-box-shadow: 0 1px 0 0 #74428D;
+    box-shadow: 0 1px 0 0 #74428D;
+}
+
+ /* .input-field input[type=text]:focus + label {
+  color: #000 !important;
+}
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+} */
 
 #footer-box {
   width: 100%;
   height: 50px;
-  background: #00695c;
+  background: #472C66;
   position: absolute;
   bottom: 0;
 }
@@ -151,12 +215,50 @@ form .row {
 }
 
 .sign-up:hover {
-  color: #b2dfdb;
+  color: #bab2df;
 }
 
 a:link, a:visited {
   text-decoration: none;
   color: inherit;
+}
+
+@media (min-width: 992px) {
+  .box .set {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .comp {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .box {
+    width: 400px;
+  }
+
+  .box .set {
+    width: 80%;
+  }
+  .auth {
+    width: 100% !important;
+    margin: auto !important;
+  }
+  .auth:first-of-type {
+    margin: auto !important;
+  }
+  .auth:last-of-type {
+    width: 100% !important;
+    margin: auto !important;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -173,5 +275,9 @@ a:link, a:visited {
 
   h1 .home {
     margin-right: 10px;
+  }
+
+  .main-cover {
+    background-image: none;
   }
 }

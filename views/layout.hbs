@@ -20,12 +20,20 @@
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="/animate.min.css" />
   <title>{{title}}</title>
+  <style>
+    .main-cover {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body bgcolor="#142833">
-  <div class="container">
-    {{!-- <i class="large material-icons">add</i> --}}
-    {{{body}}}
+  <div class="main-cover">
+    <div class="container">
+      {{!-- <i class="large material-icons">add</i> --}}
+      {{{body}}}
+    </div>
   </div>
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <script src="/javascript/toastHelper.js"></script>

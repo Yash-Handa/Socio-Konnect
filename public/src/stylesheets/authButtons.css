@@ -19,7 +19,7 @@
   height : 75px;
   margin-top: -65px;
   padding-top: 2px;
-  background : #009788;
+  background : #74428D;
   left : -125%;
   transition : .3s;
 }
@@ -41,7 +41,7 @@
 }
 #auth .button:hover .btnText{ /*When hovering over .button change .btnText*/
   margin-left : 65px;
-  color: #009788;
+  color: #472C66;
 }
 #auth .button:active { /*Clicked and held*/
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
@@ -61,4 +61,32 @@
 
 .linkedin {
   background-color: #0274B3;
+}
+
+@media (min-width: 992px) {
+  .reg.button{
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    height : 45px !important;
+  }
+
+  .reg .btnTwo {
+    height : 83px !important;
+    margin-top: -61px !important;
+    padding-top: 2px !important;
+  }
+
+  .reg .btnText2 {
+    margin-top : 43px !important;
+  }
+
+  .reg .btnText {
+    margin-top: 5px !important;
+  }
+  .reg .btnText2 {
+    margin-top : 34px !important;
+    font-size: 20px !important;
+  }
 }

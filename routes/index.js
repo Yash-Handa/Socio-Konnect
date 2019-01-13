@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // console.log(process.env.SECRET_KEY);
   res.render('index', {
-    title: 'SignIn-SignUp',
+    title: 'Socio Konnect',
     success_msg: res.locals.success_msg,
   });
 });
