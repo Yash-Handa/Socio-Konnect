@@ -29,6 +29,8 @@ html, body {
 }
 .me {
   background-color: #472C66;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .pic {
@@ -73,6 +75,7 @@ html, body {
 #dropdown1 li a {
   color: #472C66 !important;
   background-color: rgb(194, 167, 224) !important;
+  transition : .3s;
 }
 
 #dropdown1 li a:hover {
@@ -80,10 +83,69 @@ html, body {
   color: white !important;
 }
 
-.custom {
-  max-width: 700px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
+.dashboard {
+  margin-top: 10px;
+}
+.select {
+  margin: 0;
+}
+.select .col {
+  padding: 0;
+}
+.dashboard ul {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.tabs {
+  background-color: #e9eaec;
+}
+.tabs .tab a {
+  color: #472C6698;
+  padding: 0;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+  color: #472C66;
+}
+.tabs .indicator {
+  background-color: #472C66;
+}
+.content div {
+  min-height: calc(100vh - 210px) !important;
+  background-color: rgba(214, 197, 233, 0.75);
+}
+.tab a {
+  font-size: 20px !important;
+}
+
+.tabs .tab .facebook:focus, .tabs .tab .facebook:focus.active, .tabs .tab .facebook.active {
+  color: white;
+  background-color: #3C5A99;
+}
+
+.tabs .tab .google:focus, .tabs .tab .google:focus.active, .tabs .tab .google.active {
+  color: white;
+  background-color: #DE5245;
+}
+
+.tabs .tab .github:focus, .tabs .tab .github:focus.active, .tabs .tab .github.active {
+  color: white;
+  background-color: #000000;
+}
+
+.tabs .tab .twitter:focus, .tabs .tab .twitter:focus.active, .tabs .tab .twitter.active {
+  color: white;
+  background-color: #3EC6EA;
+}
+
+.tabs .tab .linkedin:focus, .tabs .tab .linkedin:focus.active, .tabs .tab .linkedin.active {
+  color: white;
+  background-color: #0274B3;
+}
+
+.tabs .tab .pinterest:focus, .tabs .tab .pinterest:focus.active, .tabs .tab .pinterest.active {
+  color: white;
+  background-color: #CC2127;
 }
 
 @media (max-width: 992px) {
@@ -114,6 +176,10 @@ html, body {
     line-height: 50px;
     padding-right: 0;
   }
+  .me {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
   .name {
     font-size: 1.2rem;
     line-height: 50px;
@@ -124,6 +190,19 @@ html, body {
     height: 80px;
     /* margin: 10px 0 10px 5px; */
     margin: -40px 0 10px 5px;
+  }
+  .dashboard {
+    margin-top: 5px;
+  }
+  .dashboard ul {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .content div {
+    min-height: calc(100vh - 153px) !important;
+  }
+  .tab a {
+    font-size: 20px !important;
   }
   .main-cover {
     background-image: none;
