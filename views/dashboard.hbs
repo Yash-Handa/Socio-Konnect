@@ -2,25 +2,26 @@
   <link rel="stylesheet" href="/stylesheets/dashboard.css">
 </head>
 
+<div class="animated fadeInDown" style="overflow: hidden">
   <div class="navigator">
     <div class="logo">Socio Konnect</div>
   </div>
 
-
-  <div class="navigator me">
-      <img src={{profilePicture}} alt="profile pic" width="125px" class="circle left pic z-depth-3 materialboxed" style="display: inline-block">
-    <div class="name"><a href='#' class="dropdown-trigger" data-target='dropdown1'>{{username}}</a></div>
+  <div class="navigator me" id="me">
+      <img src={{profilePicture}} alt="profile pic" width="125px" class="circle left pic z-depth-3 materialboxed" style="display: inline-block" id="pic">
+    <div class="name" id="name"><a href='#' class="dropdown-trigger" data-target='dropdown1'>{{username}}</a></div>
   </div>
+</div>
 
 <ul id='dropdown1' class='dropdown-content'>
   <li><a href="#!" class="center-align">Profile</a></li>
   <li><a href="/auth/logout" class="waves-effect waves-light center-align"><i class="fas fa-sign-out-alt fa-fw" data-fa-transform="shrink-1 left-3"></i>Logout</a></li>
 </ul>
 
-<div class="dashboard z-depth-3">
+<div class="dashboard z-depth-3 animated fadeInUp">
   <div class="row select">
     <div class="col s12">
-      <ul class="tabs">
+      <ul class="tabs" id="tabs">
         <li class="tab col s2"><a class="active facebook" href="#test1"><i class="fab fa-facebook-f"></i></a></li>
         <li class="tab col s2"><a href="#test2" class="google"><i class="fab fa-google"></i></a></li>
         <li class="tab col s2"><a href="#test3" class="github"><i class="fab fa-github"></i></a></li>

@@ -2,7 +2,7 @@
 html, body {
   background-color: #142834;
   font-family: "Roboto";
-  height: 100%;
+  height: auto;
 }
 
 .main-cover {
@@ -25,12 +25,20 @@ html, body {
   width: 100%;
   display: block;
   text-align: center;
-  background-color: rgb(194, 167, 224) ;
+  background-color: rgb(194, 167, 224);
 }
 .me {
   background-color: #472C66;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+.me-scroll {
+  position: fixed;
+  top: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 70% !important;
+  /* left: 0; */
 }
 
 .pic {
@@ -41,6 +49,17 @@ html, body {
   margin-right: 30px;
   z-index: 10;
   overflow: visible;
+  transition : .2s;
+}
+
+.pic-scroll {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.animated {
+  animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
 }
 
 .material-placeholder {
@@ -70,6 +89,12 @@ html, body {
   overflow-y: hidden;
   text-overflow: clip;
   white-space: nowrap;
+  transition : .2s;
+}
+.name-scroll {
+  margin-left: 0;
+  text-align: center;
+  width: calc(100% - 300px)
 }
 
 #dropdown1 li a {
@@ -99,6 +124,12 @@ html, body {
 
 .tabs {
   background-color: #e9eaec;
+  position: initial;
+}
+.tabs-scroll {
+  width: 70% !important;
+  position: fixed;
+  bottom: 0;
 }
 .tabs .tab a {
   color: #472C6698;
@@ -109,9 +140,11 @@ html, body {
 }
 .tabs .indicator {
   background-color: #472C66;
+  display: none;
 }
 .content div {
-  min-height: calc(100vh - 210px) !important;
+  /* min-height: calc(100vh - 210px) !important; */
+  min-height: calc(150vh) !important;
   background-color: rgba(214, 197, 233, 0.75);
 }
 .tab a {
@@ -121,31 +154,36 @@ html, body {
 .tabs .tab .facebook:focus, .tabs .tab .facebook:focus.active, .tabs .tab .facebook.active {
   color: white;
   background-color: #3C5A99;
+  border: 3px inset rgb(8, 29, 73);
 }
 
 .tabs .tab .google:focus, .tabs .tab .google:focus.active, .tabs .tab .google.active {
   color: white;
   background-color: #DE5245;
+  border: 3px inset rgb(104, 14, 6);
 }
 
 .tabs .tab .github:focus, .tabs .tab .github:focus.active, .tabs .tab .github.active {
   color: white;
   background-color: #000000;
+  border: 3px inset #555;
 }
 
 .tabs .tab .twitter:focus, .tabs .tab .twitter:focus.active, .tabs .tab .twitter.active {
   color: white;
   background-color: #3EC6EA;
+  border: 3px inset rgb(18, 125, 155);
 }
 
 .tabs .tab .linkedin:focus, .tabs .tab .linkedin:focus.active, .tabs .tab .linkedin.active {
   color: white;
   background-color: #0274B3;
+  border: 3px inset rgb(1, 54, 83);
 }
-
 .tabs .tab .pinterest:focus, .tabs .tab .pinterest:focus.active, .tabs .tab .pinterest.active {
   color: white;
   background-color: #CC2127;
+  border: 3px inset rgb(105, 4, 8);
 }
 
 @media (max-width: 992px) {
@@ -161,6 +199,28 @@ html, body {
   }
   .pic {
     margin-left: calc(30% - 120px);
+  }
+  .me-scroll {
+    width: 85% !important;
+  }
+  .tabs-scroll {
+    position: fixed;
+    bottom: 0;
+    width: 85% !important;
+  }
+  .pic-scroll {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .me-scroll {
+    width: 90% !important;
+  }
+  .tabs-scroll {
+    position: fixed;
+    bottom: 0;
+    width: 90% !important;
   }
 }
 
@@ -179,6 +239,15 @@ html, body {
   .me {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+  }
+  .me-scroll {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .pic-scroll {
+    margin: 0 !important;
+    margin-top: 5px !important;
+    margin-left: 5px !important;
   }
   .name {
     font-size: 1.2rem;
@@ -199,12 +268,10 @@ html, body {
     border-top-right-radius: 5px;
   }
   .content div {
-    min-height: calc(100vh - 153px) !important;
+    min-height: 150vh !important;
+    /* min-height: calc(100vh - 153px) !important; */
   }
   .tab a {
     font-size: 20px !important;
-  }
-  .main-cover {
-    background-image: none;
   }
 }
