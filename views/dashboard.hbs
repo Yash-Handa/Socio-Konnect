@@ -1,18 +1,23 @@
 <head>
-  <style>
-    .custom {
-      max-width: 700px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 14px;
-    }
-  h1 {
-    color: #01a393;
-  }
-  </style>
+  <link rel="stylesheet" href="/stylesheets/dashboard.css">
 </head>
 
-<h1>{{title}}</h1>
+  <div class="navigator">
+    <div class="logo">Socio Konnect</div>
+  </div>
 
+
+  <div class="navigator me">
+      <img src={{profilePicture}} alt="profile pic" width="125px" class="circle left pic z-depth-3 materialboxed" style="display: inline-block">
+    <div class="name"><a href='#' class="dropdown-trigger" data-target='dropdown1'>{{username}}</a></div>
+  </div>
+
+<ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!" class="center-align">Profile</a></li>
+    <li><a href="/auth/logout" class="waves-effect waves-light center-align"><i class="fas fa-sign-out-alt fa-fw" data-fa-transform="shrink-1 left-3"></i>Logout</a></li>
+  </ul>
+
+{{!--
 <div class="col s12 m8 l6 center-align">
   <div class="card-panel z-depth-1 custom">
     <div class="row">
@@ -49,7 +54,7 @@
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
       <a href="/auth/remove" class="modal-close waves-effect waves-light red darken-3 btn right modal-trigger"><i class="far fa-times-circle fa-fw" data-fa-transform="shrink-1 left-3"></i>Remove</a>
     </div>
-  </div>
+  </div> --}}
 
 <script src="/javascript/dashboard.js"></script>
 
