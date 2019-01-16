@@ -50,6 +50,7 @@ html, body {
   z-index: 10;
   overflow: visible;
   transition : .2s;
+  cursor: pointer;
 }
 
 .pic-scroll {
@@ -85,7 +86,7 @@ html, body {
 .name {
   background: #472C66;
   font-size: 1.7rem;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   overflow-y: hidden;
   text-overflow: clip;
   white-space: nowrap;
@@ -106,6 +107,11 @@ html, body {
 #dropdown1 li a:hover {
   background-color: #472C66 !important;
   color: white !important;
+}
+
+.dropdown-content {
+  width: 125px;
+  top: -30px;
 }
 
 .dashboard {
@@ -253,6 +259,10 @@ html, body {
     font-size: 1.2rem;
     line-height: 50px;
     height: 50px;
+  }
+  .dropdown-content {
+    width: 80px;
+    top: -20px;
   }
   .pic {
     width: 80px;
