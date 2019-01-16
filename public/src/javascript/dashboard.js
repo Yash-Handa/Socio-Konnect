@@ -2,7 +2,7 @@ const me = document.getElementById('me');
 const pic = document.getElementById('pic');
 const name = document.getElementById('name');
 const tab = document.getElementById('tabs');
-const deadTabButton = document.getElementById('dead-tab-button');
+const deadTabButtons = document.getElementsByClassName('dead-tab-button');
 
 document.addEventListener('DOMContentLoaded', function () {
   const warn = document.querySelectorAll('.modal');
@@ -40,18 +40,21 @@ document.addEventListener("scroll", function() {
 
 
 // dead tab content hover effect
-if(deadTabButton) {
-  const deadTabLogo = document.getElementById('dead-tab-logo');
+if(deadTabButtons) {
+  const deadTabLogos = document.getElementsByClassName('dead-logo');
 
-  deadTabButton.addEventListener("mouseenter", function() {
-    deadTabLogo.style.color = '#472C66';
-    deadTabLogo.style.top = 'calc(50% - 205px)';
-    deadTabLogo.className = 'dead-logo animated flip infinite slow';
-  });
+  for(let i = 0; i< deadTabButtons.length; i++) {
+    deadTabButtons[i].addEventListener("mouseenter", function() {
+      deadTabLogos[i].style.color = '#472C66';
+      deadTabLogos[i].style.top = 'calc(50% - 205px)';
+      deadTabLogos[i].className = 'dead-logo animated flip infinite slow';
+    });
 
-  deadTabButton.addEventListener("mouseout", function() {
-    deadTabLogo.style.color = '#dbdde2';
-    deadTabLogo.style.top = 'calc(50% - 170px)';
-    deadTabLogo.className = 'dead-logo';
-  });
+    deadTabButtons[i].addEventListener("mouseout", function() {
+      deadTabLogos[i].style.color = '#dbdde2';
+      deadTabLogos[i].style.top = 'calc(50% - 170px)';
+      deadTabLogos[i].className = 'dead-logo';
+    });
+  }
+
 }
