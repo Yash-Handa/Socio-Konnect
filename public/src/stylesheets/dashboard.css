@@ -148,9 +148,11 @@ html, body {
   background-color: #472C66;
   display: none;
 }
-.content div {
-  /* min-height: calc(100vh - 210px) !important; */
-  min-height: calc(150vh) !important;
+.content > div {
+  min-height: calc(100vh - 210px) !important;
+  margin: 0;
+  padding: 0;
+  /* min-height: calc(150vh) !important; */
   background-color: rgba(214, 197, 233, 0.75);
 }
 .tab a {
@@ -277,9 +279,9 @@ html, body {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
-  .content div {
-    min-height: 150vh !important;
-    /* min-height: calc(100vh - 153px) !important; */
+  .content > div {
+    /* min-height: 150vh !important; */
+    min-height: calc(100vh - 153px) !important;
   }
   .tab a {
     font-size: 20px !important;

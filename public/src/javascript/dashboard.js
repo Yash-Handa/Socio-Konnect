@@ -2,6 +2,7 @@ const me = document.getElementById('me');
 const pic = document.getElementById('pic');
 const name = document.getElementById('name');
 const tab = document.getElementById('tabs');
+const deadTabButton = document.getElementById('dead-tab-button');
 
 document.addEventListener('DOMContentLoaded', function () {
   const warn = document.querySelectorAll('.modal');
@@ -20,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+// scroll animation/effect/positioning
 document.addEventListener("scroll", function() {
   const scroller = window.scrollY;
   if (scroller < 75) {
@@ -34,3 +37,21 @@ document.addEventListener("scroll", function() {
     tab.className = 'tabs tabs-scroll animated fadeInUp faster'
   }
 });
+
+
+// dead tab content hover effect
+if(deadTabButton) {
+  const deadTabLogo = document.getElementById('dead-tab-logo');
+
+  deadTabButton.addEventListener("mouseenter", function() {
+    deadTabLogo.style.color = '#472C66';
+    deadTabLogo.style.top = 'calc(50% - 205px)';
+    deadTabLogo.className = 'dead-logo animated flip infinite slow';
+  });
+
+  deadTabButton.addEventListener("mouseout", function() {
+    deadTabLogo.style.color = '#dbdde2';
+    deadTabLogo.style.top = 'calc(50% - 170px)';
+    deadTabLogo.className = 'dead-logo';
+  });
+}

@@ -4,7 +4,13 @@
 {{else}}
 
 <div class="dead">
-  <h1>Facebook</h1>
+  <div class="dead-logo" id="dead-tab-logo"><i class="fab fa-facebook"></i></div>
+  <div class="dead-name">
+    <form class="col s12" method="POST" action="/auth/login">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <button type="submit" id="dead-tab-button" class="z-depth-3">Facebook</button>
+    </form>
+  </div>
 </div>
 
 {{/if}}

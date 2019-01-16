@@ -1,5 +1,62 @@
 .dead {
   width: 100%;
   text-align: center;
-  color: blue;
+  margin: 0;
+  padding: 0;
+  background-color: transparent !important;
+  height: calc(100vh - 210px);
+  overflow: hidden;
+}
+
+.dead-logo {
+  height: 50%;
+  font-size:150px;
+  position: relative;
+  top: calc(50% - 170px);
+  /* transform: translateY(-80%); */
+  transition: all 0.5s;
+  color: #dbdde2;
+}
+
+.dead-name {
+  height: 50%;
+}
+
+.dead-name button {
+  position: relative;
+  height: 50px;
+  background: #dbdde2;
+  border: 0;
+  color: #472C66;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 300;
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  border-radius: 2px;
+}
+
+.dead-name button:active {
+  background: #472C66;
+  color: #263238;
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+}
+
+.dead-name button:hover {
+  background: #472C66;
+  color: #FFF;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  box-shadow: 0px 1px 5px rgba(0,0,0,.4);
+}
+
+
+@media only screen and (max-width: 450px) {
+  .dead {
+    height: calc(100vh - 153px);
+  }
 }
