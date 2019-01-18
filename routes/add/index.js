@@ -26,8 +26,15 @@ router.post('/twitter', (req, res) => {
 router.post('/linkedin',
   passport.authorize('linkedin'));
 
-router.post('/pinterest', (req, res) => {
-  res.send('pinterest');
+router.post('/pinterest',
+  passport.authorize('pinterest'));
+
+router.get('/pinterest/callback', (req, res, next) => {
+  passport.authenticate('pinterest', {
+    successRedirect: '/dashboard#pinterest',
+    failureRedirect: '/dashboard#pinterest',
+    failureFlash: true,
+  })(req, res, next);
 });
 
 module.exports = router;

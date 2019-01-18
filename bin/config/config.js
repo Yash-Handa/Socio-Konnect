@@ -25,6 +25,8 @@ const config = {
   githubSecret: process.env.GITHUB_SECRET,
   linkedinId: process.env.LINKEDIN_ID,
   linkedinSecret: process.env.LINKEDIN_SECRET,
+  pinterestId: process.env.PINTEREST_ID,
+  pinterestSecret: process.env.PINTEREST_SECRET,
   yahooUser: process.env.DEV_EMAIL,
   yahooPass: process.env.DEV_EMAIL_PASS,
   sender: process.env.EMAIL_SENDER,

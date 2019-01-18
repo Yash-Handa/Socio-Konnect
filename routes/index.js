@@ -23,6 +23,7 @@ router.get('/dashboard', authChecker, (req, res) => {
     title: 'Dashboard',
     csrfToken: req.csrfToken(),
     error_msg: res.locals.error_msg,
+    error: res.locals.error,
     username: req.user.username,
     email: req.user.email,
     provider: req.user.provider,
