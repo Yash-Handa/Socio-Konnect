@@ -22,9 +22,8 @@ router.post('/twitter', (req, res) => {
   res.send('twitter');
 });
 
-router.post('/linkedin', (req, res) => {
-  res.send('linkedin');
-});
+router.post('/linkedin',
+  passport.authorize('linkedin'));
 
 router.post('/pinterest', (req, res) => {
   res.send('pinterest');
