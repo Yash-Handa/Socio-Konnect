@@ -6,7 +6,12 @@
 
 const debug = require('debug')('SocioKonnect:server');
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
 const app = require('../app');
+
+const config = require('./config/config');
 
 /**
  * Get port from environment and store in Express.
@@ -16,10 +21,20 @@ const port = normalizePort(process.env.PORT || '1998');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTPS or HTTP server based on development env.
  */
 
-const server = http.createServer(app);
+let server;
+
+if (config.env === 'development') {
+  server = https.createServer({
+    key: fs.readFileSync(path.resolve(__dirname, '../key.pem')),
+    cert: fs.readFileSync(path.resolve(__dirname, '../cert.pem')),
+    passphrase: config.passphrase,
+  }, app);
+} else {
+  server = http.createServer(app);
+}
 
 /**
  * Listen on provided port, on all network interfaces.

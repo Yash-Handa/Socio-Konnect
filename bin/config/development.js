@@ -11,4 +11,5 @@
 
 module.exports = {
   host: process.env.DEV_HOST,
+  passphrase: process.env.DEV_CER_PASS_PHRASE,
 };
