@@ -7,10 +7,22 @@ module.exports = router => {
     }));
 
   router.get('/google/callback', (req, res, next) => {
-    passport.authenticate('google', {
-      successRedirect: '/dashboard',
-      failureRedirect: '/auth/login',
-      failureFlash: true,
+    passport.authenticate('google', (err, user, info) => {
+      if (err) { return next(err); }
+      if (!user) {
+        req.flash('error_msg', info.message);
+        // for authorizing call (user already exist and login)
+        if (req.isAuthenticated()) return res.redirect('/dashboard#google');
+        return res.redirect('/auth/login');
+      }
+
+      // for authorizing call (user already exist and login)
+      if (req.isAuthenticated()) return res.redirect('/dashboard#google');
+
+      req.logIn(user, error => {
+        if (error) { return next(err); }
+        return res.redirect('/dashboard#google');
+      });
     })(req, res, next);
   });
 };

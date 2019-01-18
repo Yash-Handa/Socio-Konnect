@@ -11,9 +11,10 @@ router.post('/facebook',
     scope: ['public_profile', 'email'], // 'user_link' for public profile and 'user_gender' for gender
   }));
 
-router.post('/google', (req, res) => {
-  res.send('google');
-});
+router.post('/google',
+  passport.authorize('google', {
+    scope: ['profile', 'email'],
+  }));
 
 router.post('/github',
   passport.authorize('github'));
