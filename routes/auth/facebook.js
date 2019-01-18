@@ -6,13 +6,23 @@ module.exports = router => {
       scope: ['public_profile', 'email'], // 'user_link' for public profile and 'user_gender' for gender
     }));
 
-  // router.get('/facebook', passport.authenticate('facebook'));
-
   router.get('/facebook/callback', (req, res, next) => {
-    passport.authenticate('facebook', {
-      successRedirect: '/dashboard',
-      failureRedirect: '/auth/login',
-      failureFlash: true,
+    passport.authenticate('facebook', (err, user, info) => {
+      if (err) { return next(err); }
+      if (!user) {
+        req.flash('error_msg', info.message);
+        // for authorizing call (user already exist and login)
+        if (req.isAuthenticated()) return res.redirect('/dashboard#facebook');
+        return res.redirect('/auth/login');
+      }
+
+      // for authorizing call (user already exist and login)
+      if (req.isAuthenticated()) return res.redirect('/dashboard#facebook');
+
+      req.logIn(user, error => {
+        if (error) { return next(err); }
+        return res.redirect('/dashboard#facebook');
+      });
     })(req, res, next);
   });
 };

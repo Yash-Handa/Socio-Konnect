@@ -8,6 +8,7 @@ const connectDB = require('./DB/connect');
 const appMiddleware = require('./middlewares/appMiddleware');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth/signInSignUp');
+const addRouter = require('./routes/add/index');
 
 const app = express();
 
@@ -20,6 +21,7 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
 appMiddleware(app, connectDB);
 
 app.use('/auth', authRouter);
+app.use('/add', addRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

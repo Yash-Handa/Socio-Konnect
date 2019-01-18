@@ -8,7 +8,7 @@ function extras(data, token) {
   user.picture = data.pictureUrl;
   user.accessToken = token;
   user.id = data.id;
-  // user.profile = data.publicProfileUrl;
+  user.profile = data.publicProfileUrl;
   // user.location = data.location;
   // user.positions = data.positions;
   // user.numConnections = data.numConnections;
@@ -28,7 +28,7 @@ module.exports = passport => {
       passReqToCallback: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
-      // console.log(profile);
+      // console.log(JSON.stringify(profile, undefined, 2));
       // done(null, profile);
 
       // check if email exist in the linkedin id or not

@@ -7,8 +7,8 @@ function extras(data, token) {
   const user = {};
   user.profile = data.profile;
   user.picture = data.picture;
-  user.gender = data.gender;
-  user.locale = data.locale;
+  // user.gender = data.gender;
+  // user.locale = data.locale;
   user.accessToken = token;
   user.id = data.sub;
   return user;
@@ -23,7 +23,7 @@ module.exports = passport => {
     passReqToCallback: true,
   },
   (req, accessToken, refreshToken, profile, done) => {
-    // console.log(profile);
+    // console.log(JSON.stringify(profile, undefined, 2));
     // return done(null, profile);
 
     // check if email exist in the google id or not

@@ -33,7 +33,6 @@ const userSchema = new Schema({
   github: {},
   linkedin: {},
   pinterest: {},
-  instagram: {},
 
   // no need to use 'provider' for multi-platform combination
   provider: {

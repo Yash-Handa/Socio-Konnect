@@ -5,10 +5,22 @@ module.exports = router => {
     passport.authenticate('github'));
 
   router.get('/github/callback', (req, res, next) => {
-    passport.authenticate('github', {
-      successRedirect: '/dashboard',
-      failureRedirect: '/auth/login',
-      failureFlash: true,
+    passport.authenticate('github', (err, user, info) => {
+      if (err) { return next(err); }
+      if (!user) {
+        req.flash('error_msg', info.message);
+        // for authorizing call (user already exist and login)
+        if (req.isAuthenticated()) return res.redirect('/dashboard#github');
+        return res.redirect('/auth/login');
+      }
+
+      // for authorizing call (user already exist and login)
+      if (req.isAuthenticated()) return res.redirect('/dashboard#github');
+
+      req.logIn(user, error => {
+        if (error) { return next(err); }
+        return res.redirect('/dashboard#github');
+      });
     })(req, res, next);
   });
 };
