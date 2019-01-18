@@ -47,7 +47,6 @@
 }
 
 .dead-name button:hover {
-  background: #472C66;
   color: #FFF;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;

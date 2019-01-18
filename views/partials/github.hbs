@@ -1,12 +1,29 @@
 
 {{#if false}}
 
+<div class="col s12 m8 l6 center-align">
+  <div class="card-panel z-depth-1 custom">
+    <div class="row">
+      <div class="col s12 m4 l3">
+        <img src={{profilePicture}} alt="profile pic" width="125px" class="circle materialboxed center-align" style="display: inline-block"> <!-- notice the "circle" class -->
+      </div>
+      <div class="col s12 m8 l9">
+        <span class="black-text">
+          <h5>Welcome {{username}}</h5>
+          <p><strong>{{email}}</strong></p>
+          <p class="right-align" style="text-transform: capitalize;"><i> - {{provider}}</i></p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{else}}
 
 <div class="dead">
   <div class="dead-logo"><i class="fab fa-github"></i></div>
   <div class="dead-name">
-    <form class="col s12" method="POST" action="/auth/login">
+    <form class="col s12" method="POST" action="/add/github">
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <button type="submit" class="z-depth-3 dead-tab-button">GitHub</button>
     </form>

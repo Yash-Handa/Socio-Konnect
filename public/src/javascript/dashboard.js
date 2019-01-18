@@ -41,17 +41,27 @@ document.addEventListener("scroll", function() {
 
 // dead tab content hover effect
 if(deadTabButtons) {
+  const brandColors = {
+    Facebook: '#3C5A99',
+    Google: '#DE5245',
+    GitHub: '#000000',
+    Twitter: '#3EC6EA',
+    LinkedIn: '#0274B3',
+    Pinterest: '#CC2127',
+  };
   const deadTabLogos = document.getElementsByClassName('dead-logo');
 
   for(let i = 0; i< deadTabButtons.length; i++) {
     deadTabButtons[i].addEventListener("mouseenter", function() {
-      deadTabLogos[i].style.color = '#472C66';
+      deadTabLogos[i].style.color = brandColors[deadTabButtons[i].innerText];
+      deadTabButtons[i].style.backgroundColor = brandColors[deadTabButtons[i].innerText];
       deadTabLogos[i].style.top = 'calc(50% - 205px)';
       deadTabLogos[i].className = 'dead-logo animated flip infinite slow';
     });
 
     deadTabButtons[i].addEventListener("mouseout", function() {
       deadTabLogos[i].style.color = '#dbdde2';
+      deadTabButtons[i].style.backgroundColor ='#dbdde2';
       deadTabLogos[i].style.top = 'calc(50% - 170px)';
       deadTabLogos[i].className = 'dead-logo';
     });
