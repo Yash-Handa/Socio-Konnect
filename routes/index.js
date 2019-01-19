@@ -28,6 +28,12 @@ router.get('/dashboard', authChecker, (req, res) => {
     email: req.user.email,
     provider: req.user.provider,
     profilePicture: picture,
+    facebook: req.user.facebook,
+    google: req.user.google,
+    github: req.user.github,
+    linkedin: req.user.linkedin,
+    pinterest: req.user.pinterest,
+    twitter: req.user.twitter,
   });
 });
 
