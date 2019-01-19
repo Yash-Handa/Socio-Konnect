@@ -8,6 +8,7 @@ const facebook = require('./facebookStrategy');
 const github = require('./githubStrategy');
 const linkedin = require('./linkedinStrategy');
 const pinterest = require('./pinterestStrategy');
+const twitter = require('./twitterStrategy');
 
 module.exports = app => {
   app.use(passport.initialize());
@@ -20,6 +21,7 @@ module.exports = app => {
   github(passport);
   linkedin(passport);
   pinterest(passport);
+  twitter(passport);
 
   // serializing users after the strategies are loaded
   passport.serializeUser((user, done) => {

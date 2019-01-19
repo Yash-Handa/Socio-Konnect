@@ -1,38 +1,35 @@
-// This strategy is only for authorizing(connecting) not for authenticating(registration)
-
-const PinterestStrategy = require('passport-pinterest').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 
 const config = require('../../bin/config/config');
 const User = require('../../DB/schema');
 
-function extras(data, token) {
+function extras(data, token, tokenSecret) {
   const user = {};
-  user.picture = data.data.image['60x60'].url;
-  user.accessToken = token;
+  user.picture = data.profile_image_url_https;
+  user.token = token;
+  user.tokenSecret = tokenSecret;
   user.id = data.id;
-  user.profile = data.data.url;
+  user.profile = `https://twitter.com/${data.screen_name}`;
   return user;
 }
 
 module.exports = passport => {
-  passport.use(new PinterestStrategy(
+  passport.use(new TwitterStrategy(
     {
-      clientID: config.pinterestId,
-      clientSecret: config.pinterestSecret,
-      scope: ['read_public'],
-      callbackURL: `${config.host}/add/pinterest/callback`,
-      state: true,
+      consumerKey: config.twitterId,
+      consumerSecret: config.twitterSecret,
+      callbackURL: `${config.host}/add/twitter/callback`,
       passReqToCallback: true,
     },
-    (req, accessToken, refreshToken, profile, done) => {
-      // console.log(JSON.stringify(req.user, undefined, 2));
+    (req, token, tokenSecret, profile, done) => {
+      // console.log(JSON.stringify(profile, undefined, 2));
       // done(null, req.user);
 
       if (req.user) {
         User.findOne({ email: req.user.email }).exec()
           .then(user => {
             // eslint-disable-next-line no-underscore-dangle
-            user.set({ pinterest: extras(profile._json, accessToken) });
+            user.set({ twitter: extras(profile._json, token, tokenSecret) });
             user.save((err, updatedUser) => {
               if (err) {
                 return done(null, false, {

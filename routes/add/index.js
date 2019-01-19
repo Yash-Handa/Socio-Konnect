@@ -19,8 +19,15 @@ router.post('/google',
 router.post('/github',
   passport.authorize('github'));
 
-router.post('/twitter', (req, res) => {
-  res.send('twitter');
+router.post('/twitter',
+  passport.authenticate('twitter'));
+
+router.get('/twitter/callback', (req, res, next) => {
+  passport.authenticate('twitter', {
+    successRedirect: '/dashboard#twitter',
+    failureRedirect: '/dashboard#twitter',
+    failureFlash: true,
+  })(req, res, next);
 });
 
 router.post('/linkedin',

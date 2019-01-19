@@ -27,6 +27,8 @@ const config = {
   linkedinSecret: process.env.LINKEDIN_SECRET,
   pinterestId: process.env.PINTEREST_ID,
   pinterestSecret: process.env.PINTEREST_SECRET,
+  twitterId: process.env.TWITTER_ID,
+  twitterSecret: process.env.TWITTER_SECRET,
   yahooUser: process.env.DEV_EMAIL,
   yahooPass: process.env.DEV_EMAIL_PASS,
   sender: process.env.EMAIL_SENDER,
