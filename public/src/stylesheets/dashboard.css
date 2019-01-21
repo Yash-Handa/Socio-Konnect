@@ -159,6 +159,18 @@ html, body {
   font-size: 20px !important;
 }
 
+.disabled {
+  background-color: rgba(131, 131, 131, 0.9) !important;
+}
+
+.disabled > a {
+  cursor: not-allowed !important;
+}
+
+.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+  color: transparent;
+}
+
 .tabs .tab .facebook:focus, .tabs .tab .facebook:focus.active, .tabs .tab .facebook.active {
   color: white;
   background-color: #3C5A99;

@@ -1,8 +1,28 @@
 
 {{#if twitter}}
 
-<img src={{twitter.picture}} alt="profile pic" width="125px" class="circle center-align" style="display: inline-block">
-<h5>Profile: {{twitter.profile}}</h5>
+<div class="live">
+  <div class="switches container">
+    <div class="switch first">
+      <p class="left">Send to Twitter</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="twitter-too" class="PSelect">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+    <div class="switch">
+      <p class="left">Send to Twitter ONLY</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="twitter" class="PSOnly">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+  </div>
+</div>
 
 {{else}}
 

@@ -1,8 +1,28 @@
 
 {{#if facebook}}
 
-<img src={{facebook.picture}} alt="profile pic" width="125px" class="circle center-align" style="display: inline-block">
-<h5>Profile: {{facebook.profile}}</h5>
+<div class="live">
+  <div class="switches container">
+    <div class="switch first">
+      <p class="left">Send to Facebook</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="facebook-too" class="PSelect">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+    <div class="switch">
+      <p class="left">Send to Facebook ONLY</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="facebook" class="PSOnly">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+  </div>
+</div>
 
 {{else}}
 

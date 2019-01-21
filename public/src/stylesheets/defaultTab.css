@@ -53,9 +53,46 @@
   box-shadow: 0px 1px 5px rgba(0,0,0,.4);
 }
 
+.live {
+  background-color: rgb(190, 177, 206);
+  height: calc(100vh - 210px);
+}
+
+.live .switches {
+  padding-top: 20px;
+}
+
+.live .switch {
+  height: 40px;
+  line-height: 40px;
+  font-weight: 500;
+  font-size: larger;
+  color: #4e025a;
+}
+
+.switch > p {
+  padding: 0;
+  margin: 0;
+}
+
+.switch > label {
+  color: #4e025a;
+}
+
+.switch.first {
+  border-bottom: 1px solid gray;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #6506747a;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #591861;
+}
 
 @media only screen and (max-width: 450px) {
-  .dead {
+  .dead, .live {
     height: calc(100vh - 153px);
   }
 }

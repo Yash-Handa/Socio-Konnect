@@ -2,7 +2,10 @@ const me = document.getElementById('me');
 const pic = document.getElementById('pic');
 const name = document.getElementById('name');
 const tab = document.getElementById('tabs');
+const tabChildren = tab.children;
 const deadTabButtons = document.getElementsByClassName('dead-tab-button');
+const selectors = document.getElementsByClassName('PSelect');
+const PSOnly = document.getElementsByClassName('PSOnly');
 
 document.addEventListener('DOMContentLoaded', function () {
   const warn = document.querySelectorAll('.modal');
@@ -20,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     swipeable: false,
   });
 });
-
 
 // scroll animation/effect/positioning
 document.addEventListener("scroll", function() {
@@ -66,5 +68,26 @@ if(deadTabButtons) {
       deadTabLogos[i].className = 'dead-logo';
     });
   }
+}
 
+// tab disabler according to the switches
+for (let index = 0; index < PSOnly.length; index++) {
+  PSOnly[index].onchange = function() {
+    const classes = PSOnly[index].checked ? 'tab col s2 disabled': 'tab col s2';
+    console.log(PSOnly[index], PSOnly[index].checked);
+    for(let i = 0; i < tabChildren.length-1; i++) {
+      if (tabChildren[i].className === PSOnly[index].name) tabChildren[i].className = 'tab col s2'
+      else tabChildren[i].className = classes;
+    }
+    for(let i = 0; i < selectors.length; i++) {
+      if (selectors[i].name === `${PSOnly[index].name}-too`) {
+        selectors[i].checked = true;
+        selectors[i].disabled = PSOnly[index].checked;
+      }
+      else {
+        selectors[i].checked = false;
+        selectors[i].disabled = PSOnly[index].checked;
+      }
+    }
+  }
 }

@@ -1,8 +1,28 @@
 
 {{#if google}}
 
-<img src={{google.picture}} alt="profile pic" width="125px" class="circle center-align" style="display: inline-block">
-<h5>Profile: {{google.profile}}</h5>
+<div class="live">
+  <div class="switches container">
+    <div class="switch first">
+      <p class="left">Send to Google</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="google-too" class="PSelect">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+    <div class="switch">
+      <p class="left">Send to Google ONLY</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="google" class="PSOnly">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+  </div>
+</div>
 
 {{else}}
 
