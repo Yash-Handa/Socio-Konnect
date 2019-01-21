@@ -95,4 +95,13 @@
   .dead, .live {
     height: calc(100vh - 153px);
   }
+  .live .switch {
+    height: 35px;
+    line-height: 35px;
+    font-weight: 300;
+    font-size: medium;
+  }
+  .lever {
+    margin: 0px !important;
+  }
 }

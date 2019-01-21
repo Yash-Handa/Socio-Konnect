@@ -206,6 +206,18 @@ html, body {
   border: 3px inset rgb(105, 4, 8);
 }
 
+#message {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  font-size: 18px;
+  box-shadow: 0px 0px 20px 3px #472C66;
+  background-color: #472C66;
+}
+
 @media (max-width: 992px) {
   .navigator {
     padding: 0 30px 0 0;
@@ -241,6 +253,14 @@ html, body {
     position: fixed;
     bottom: 0;
     width: 90% !important;
+  }
+  #message {
+    bottom: 20px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
   }
 }
 
