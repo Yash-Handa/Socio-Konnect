@@ -8,8 +8,15 @@ const selectors = document.getElementsByClassName('PSelect');
 const PSOnly = document.getElementsByClassName('PSOnly');
 
 document.addEventListener('DOMContentLoaded', function () {
-  const warn = document.querySelectorAll('.modal');
-  const instances = M.Modal.init(warn[0], {});
+  const box = document.querySelectorAll('.modal');
+  const textAreas = document.querySelectorAll('textarea');
+  const instances = M.Modal.init(box, {
+    onCloseStart: function() {
+      console.log('Hello');
+    }
+  });
+
+  M.CharacterCounter.init(textAreas);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -74,7 +81,6 @@ if(deadTabButtons) {
 for (let index = 0; index < PSOnly.length; index++) {
   PSOnly[index].onchange = function() {
     const classes = PSOnly[index].checked ? 'tab col s2 disabled': 'tab col s2';
-    console.log(PSOnly[index], PSOnly[index].checked);
     for(let i = 0; i < tabChildren.length-1; i++) {
       if (tabChildren[i].className === PSOnly[index].name) tabChildren[i].className = 'tab col s2'
       else tabChildren[i].className = classes;

@@ -55,7 +55,7 @@
 
 .live {
   background-color: rgb(190, 177, 206);
-  height: calc(100vh - 210px);
+  min-height: calc(100vh - 210px);
 }
 
 .live .switches {
@@ -91,9 +91,13 @@
   background-color: #591861;
 }
 
+.live .custom-msg {
+  padding: 30px 0 110px 0;
+}
+
 @media only screen and (max-width: 450px) {
   .dead, .live {
-    height: calc(100vh - 153px);
+    min-height: calc(100vh - 153px);
   }
   .live .switch {
     height: 35px;
@@ -103,5 +107,8 @@
   }
   .lever {
     margin: 0px !important;
+  }
+  .live .custom-msg {
+    padding: 30px 0 90px 0;
   }
 }

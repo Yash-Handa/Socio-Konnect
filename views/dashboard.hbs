@@ -43,7 +43,28 @@
   </div>
 </div>
 
-<a class="btn-floating btn-large waves-effect waves-light" id="message"><i class="fas fa-comment-alt fa-2x" data-fa-transform="down-4"></i></a>
+<a class="btn-floating btn-large waves-effect waves-light modal-trigger" href="#generalMsg" id="message"><i class="fas fa-pen-nib fa-2x" data-fa-transform="down-4"></i></a>
+
+<!-- Modal Structure -->
+<div id="generalMsg" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4 class="center-align">Create Msg :)</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="globalMsg" class="materialize-textarea"></textarea>
+            <label for="globalMsg">Message</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-purple btn-flat right">Send<i class="fas fa-share-square" data-fa-transform="shrink-2 right-6"></i></a>
+    <a href="#!" class="modal-close waves-effect waves-purple btn-flat left">Customize<i class="fas fa-edit" data-fa-transform="shrink-2 right-6"></i></a>
+  </div>
+</div>
 
 {{!--
 <div class="col s12 m8 l6 center-align">

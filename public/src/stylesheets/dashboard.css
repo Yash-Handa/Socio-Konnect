@@ -218,6 +218,23 @@ html, body {
   background-color: #472C66;
 }
 
+#message:hover {
+  box-shadow: 0px 0px 10px 0px #000000;
+}
+
+textarea:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #472C66;
+  webkit-box-shadow: 0 1px 0 0 #472C66;
+  box-shadow: 0 1px 0 0 #472C66;
+}
+textarea:not(.browser-default):focus:not([readonly]) + label {
+   color: #472C66;
+}
+
+textarea.materialize-textarea {
+  /* background-color: rgb(194, 167, 224); */
+}
+
 @media (max-width: 992px) {
   .navigator {
     padding: 0 30px 0 0;
@@ -255,7 +272,7 @@ html, body {
     width: 90% !important;
   }
   #message {
-    bottom: 20px;
+    bottom: 30px;
     right: 15px;
     width: 50px;
     height: 50px;
