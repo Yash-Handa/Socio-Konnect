@@ -31,6 +31,7 @@ html, body {
   background-color: #472C66;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  z-index: 10;
 }
 .me-scroll {
   position: fixed;

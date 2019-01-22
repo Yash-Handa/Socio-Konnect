@@ -12,10 +12,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const textAreas = document.querySelectorAll('textarea');
   const instances = M.Modal.init(box, {
     onCloseStart: function() {
-      console.log('Hello');
+      let content = document.getElementById('globalMsg').value;
+      for (let i = 0; i < textAreas.length; i++) {
+        if (textAreas[i].id === 'globalMsg');
+        else {
+          if (content.length !== 0) {
+            textAreas[i].value = content;
+          }
+        }
+      }
     }
   });
-
   M.CharacterCounter.init(textAreas);
 });
 

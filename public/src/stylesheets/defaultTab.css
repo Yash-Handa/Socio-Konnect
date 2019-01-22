@@ -56,6 +56,7 @@
 .live {
   background-color: rgb(190, 177, 206);
   min-height: calc(100vh - 210px);
+  overflow: auto;
 }
 
 .live .switches {
@@ -92,7 +93,13 @@
 }
 
 .live .custom-msg {
-  padding: 30px 0 110px 0;
+  padding: 0;
+  padding-top: 30px;
+}
+
+.live .custom-msg .input-field {
+  padding: 0;
+  padding-bottom: 110px;
 }
 
 @media only screen and (max-width: 450px) {
@@ -108,7 +115,7 @@
   .lever {
     margin: 0px !important;
   }
-  .live .custom-msg {
-    padding: 30px 0 90px 0;
+  .live .custom-msg .input-field {
+    padding-bottom: 90px;
   }
 }
