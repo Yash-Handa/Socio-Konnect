@@ -1,6 +1,6 @@
 # Socio Konnect
 
-[![Codeship Status for Yash-Handa/Socio-Konnect](https://app.codeship.com/projects/849adba0-f99d-0136-ae21-1a0cd865de7f/status?branch=master&style=flat-square)](/projects/321418)
+[![Codeship Status for Yash-Handa/Socio-Konnect](https://app.codeship.com/projects/849adba0-f99d-0136-ae21-1a0cd865de7f/status?branch=master)](/projects/321418)
 ![code size](https://img.shields.io/github/languages/code-size/Yash-Handa/Socio-Konnect.svg?style=flat-square)
 ![licence](https://img.shields.io/github/license/Yash-Handa/Socio-Konnect.svg?style=flat-square)
 ![dependencies](https://img.shields.io/david/Yash-Handa/Socio-Konnect.svg?style=flat-square)

@@ -261,10 +261,6 @@ textarea:not(.browser-default):focus:not([readonly]) + label {
   margin-right: 10px;
 }
 
-#confirm-content > li {
-  /* display: none; */
-}
-
 @media (max-width: 992px) {
   .navigator {
     padding: 0 30px 0 0;
