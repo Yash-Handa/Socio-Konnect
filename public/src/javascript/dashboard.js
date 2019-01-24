@@ -63,6 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   M.Tabs.init(tabs, {
     swipeable: false,
+    onShow : function () {
+      const msgToFocus = document.getElementById(`${this.$content[0].id}Msg`);
+      msgToFocus.focus();
+      msgToFocus.nextElementSibling.className = 'active';
+    },
   });
   M.Collapsible.init(confirmCollapsible, {});
 });
