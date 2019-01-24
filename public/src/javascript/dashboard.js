@@ -7,21 +7,48 @@ const deadTabButtons = document.getElementsByClassName('dead-tab-button');
 const selectors = document.getElementsByClassName('PSelect');
 const PSOnly = document.getElementsByClassName('PSOnly');
 
+function confirmor(name, li) {
+  const toggler = document.querySelector(`input[name='${name}-too']`).checked
+  const msg = document.getElementById(`${name}Msg`);
+  if(msg.value.length !== 0 && toggler) {
+    li.style.display = 'list-item';
+    li.children[1].innerText = msg.value;
+  } else {
+    li.style.display = 'none';
+    li.children[1].innerText = '';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const box = document.querySelectorAll('.modal');
   const textAreas = document.querySelectorAll('textarea');
   const instances = M.Modal.init(box, {
     onCloseStart: function() {
-      let content = document.getElementById('globalMsg').value;
-      for (let i = 0; i < textAreas.length; i++) {
-        if (textAreas[i].id === 'globalMsg');
-        else {
-          if (content.length !== 0) {
-            textAreas[i].value = content;
+      // console.log(this);
+      if (this.id === 'generalMsg') {
+        let content = document.getElementById('globalMsg').value;
+        for (let i = 0; i < textAreas.length; i++) {
+          if (textAreas[i].id === 'globalMsg');
+          else {
+            if (content.length !== 0) {
+              textAreas[i].value = content;
+            }
           }
         }
       }
-    }
+    },
+
+    onOpenStart: function() {
+      if (this.id === 'sender-confirm') {
+        const confirmUl = document.getElementById('confirm-content');
+        confirmor('facebook', confirmUl.children[0]);
+        confirmor('google', confirmUl.children[1]);
+        confirmor('github', confirmUl.children[2]);
+        confirmor('twitter', confirmUl.children[3]);
+        confirmor('linkedin', confirmUl.children[4]);
+        confirmor('pinterest', confirmUl.children[5]);
+      }
+    },
   });
   M.CharacterCounter.init(textAreas);
 });
@@ -29,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function() {
   const drop = document.querySelectorAll('.dropdown-trigger');
   const tabs = document.querySelectorAll('.tabs');
+  const confirmCollapsible = document.querySelectorAll('.collapsible');
   M.Dropdown.init(drop, {
     alignment: 'left',
     constrainWidth: false,
@@ -36,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
   M.Tabs.init(tabs, {
     swipeable: false,
   });
+  M.Collapsible.init(confirmCollapsible, {});
 });
 
 // scroll animation/effect/positioning
