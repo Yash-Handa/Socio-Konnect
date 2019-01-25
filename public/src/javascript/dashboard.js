@@ -179,7 +179,7 @@ if (sendFetch) {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(JSON.stringify(data))
+          console.log(data);
         });
     }
   })

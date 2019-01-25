@@ -7,6 +7,7 @@ const path = require('path');
 const connectDB = require('./DB/connect');
 const appMiddleware = require('./middlewares/appMiddleware');
 const indexRouter = require('./routes/index');
+const dashboardRouter = require('./routes/dashboard');
 const authRouter = require('./routes/auth/signInSignUp');
 const addRouter = require('./routes/add/index');
 
@@ -21,6 +22,7 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
 appMiddleware(app, connectDB);
 
 app.use('/auth', authRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/add', addRouter);
 app.use('/', indexRouter);
 
