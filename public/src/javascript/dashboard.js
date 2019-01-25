@@ -41,6 +41,54 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
       }
+
+      if (this.id === 'send-summary') {
+        const afterFetch = document.getElementById('loader-summery');
+        afterFetch.className = 'valign-wrapper loader';
+        afterFetch.innerHTML = `
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        `;
+      }
     },
 
     onOpenStart: function() {
@@ -149,6 +197,7 @@ for (let index = 0; index < PSOnly.length; index++) {
 //*****************************************************************
 // fetch api
 const sendFetch = document.getElementById('send-fetch');
+const afterFetch = document.getElementById('loader-summery');
 if (sendFetch) {
   sendFetch.addEventListener('click', () => {
     const liFetch = document.getElementById('confirm-content').children
@@ -165,6 +214,13 @@ if (sendFetch) {
 
     if (dataToSend.length === 0) {
       // give an error msg on the next modal of no data to send.
+      afterFetch.className = '';
+      afterFetch.innerHTML = `
+      <div class="summary-msg error">
+        <i class="fas fa-times fa-fw confirm-icons"></i>
+        No Message to send.
+      </div>
+      `;
     } else {
       const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
       fetch('/dashboard/send', {
@@ -179,7 +235,26 @@ if (sendFetch) {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
+          let summaryMsg = '';
+          data.forEach((msg) => {
+            if (msg.status === 'error') {
+              summaryMsg += `
+              <div class="summary-msg error animated bounceIn">
+                <i class="fas fa-times fa-fw confirm-icons"></i>
+                There was an error while Posting on ${msg.from}.
+              </div>
+              `;
+            } else {
+              summaryMsg += `
+              <div class="summary-msg success animated bounceIn">
+                <i class="fas fa-check fa-fw confirm-icons"></i>
+                The Post is send to ${msg.from}.
+              </div>
+              `;
+            }
+          });
+          afterFetch.className = '';
+          afterFetch.innerHTML = summaryMsg;
         });
     }
   })

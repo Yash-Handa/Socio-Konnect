@@ -30,7 +30,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/send', (req, res) => {
-  res.status(200).json(req.body);
+  setTimeout(() => {
+    res.status(200).json(req.body.map(data => ({
+      from: data.sendTo,
+      status: 'success',
+    })));
+  }, 2000);
 });
 
 module.exports = router;
