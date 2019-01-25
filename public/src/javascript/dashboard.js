@@ -8,11 +8,16 @@ const selectors = document.getElementsByClassName('PSelect');
 const PSOnly = document.getElementsByClassName('PSOnly');
 
 function confirmor(name, li) {
-  const toggler = document.querySelector(`input[name='${name}-too']`).checked
+  const toggler = document.querySelector(`input[name='${name}-too']`);
   const msg = document.getElementById(`${name}Msg`);
-  if(msg.value.length !== 0 && toggler) {
-    li.style.display = 'list-item';
-    li.children[1].innerText = msg.value;
+  if(msg && toggler) {
+    if (msg.value.length !== 0 && toggler.checked) {
+      li.style.display = 'list-item';
+      li.children[1].innerText = msg.value;
+    } else {
+      li.style.display = 'none';
+      li.children[1].innerText = '';
+    }
   } else {
     li.style.display = 'none';
     li.children[1].innerText = '';
@@ -65,8 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
     swipeable: false,
     onShow : function () {
       const msgToFocus = document.getElementById(`${this.$content[0].id}Msg`);
-      msgToFocus.focus();
-      msgToFocus.nextElementSibling.className = 'active';
+      if (msgToFocus) {
+        msgToFocus.focus();
+        msgToFocus.nextElementSibling.className = 'active';
+      }
     },
   });
   M.Collapsible.init(confirmCollapsible, {});
@@ -137,4 +144,43 @@ for (let index = 0; index < PSOnly.length; index++) {
       }
     }
   }
+}
+
+//*****************************************************************
+// fetch api
+const sendFetch = document.getElementById('send-fetch');
+if (sendFetch) {
+  sendFetch.addEventListener('click', () => {
+    const liFetch = document.getElementById('confirm-content').children
+    const dataToSend = [];
+
+    for (let i = 0; i < liFetch.length; i++) {
+      if (liFetch[i].children[1].innerText !== '') {
+        dataToSend.push({
+          sendTo: liFetch[i].children[0].innerText.toLowerCase().trim(),
+          data: liFetch[i].children[1].innerText,
+        });
+      }
+    }
+
+    if (dataToSend.length === 0) {
+      // give an error msg on the next modal of no data to send.
+    } else {
+      const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      fetch('/dashboard/send', {
+        method: 'POST',
+        credentials: 'same-origin', // <-- includes cookies in the request
+        headers: {
+          'Accept': 'application/json, text/plain',
+          'Content-type': 'application/json',
+          'CSRF-Token': token,
+        },
+        body: JSON.stringify(dataToSend),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(JSON.stringify(data))
+        });
+    }
+  })
 }

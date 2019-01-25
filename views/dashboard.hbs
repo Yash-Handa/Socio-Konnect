@@ -1,4 +1,5 @@
 <head>
+  <meta name="csrf-token" content={{csrfToken}}>
   <link rel="stylesheet" href="/stylesheets/dashboard.css">
   <link rel="stylesheet" href="/stylesheets/defaultTab.css">
 </head>
@@ -100,7 +101,7 @@
       </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-purple btn-flat right">Send<i class="fas fa-share-square" data-fa-transform="shrink-2 right-6"></i></a>
+      <a href="#!" id="send-fetch" class="modal-close waves-effect waves-purple btn-flat right">Send<i class="fas fa-share-square" data-fa-transform="shrink-2 right-6"></i></a>
       <a href="#!" class="modal-close waves-effect waves-purple btn-flat left">Edit<i class="fas fa-edit" data-fa-transform="shrink-2 right-6"></i></a>
     </div>
   </div>
