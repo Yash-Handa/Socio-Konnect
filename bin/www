@@ -36,6 +36,9 @@ if (config.env === 'development') {
   server = http.createServer(app);
 }
 
+// for bringing localhost back to HTTP
+// server = http.createServer(app);
+
 /**
  * Listen on provided port, on all network interfaces.
  */

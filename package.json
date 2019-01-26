@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prestart": "run-s lint-server lint-client",
+    "prestart": "run-s lint-server lint-client sw",
     "start2": "node ./bin/www",
     "debug": "set DEBUG=SocioKonnect:* & npm run start2",
     "start": "run-p lint-w debug",
     "start-w": "nodemon --exec run-s prestart debug",
-    "start-w-lite": "nodemon --exec npm run debug",
+    "start-w-lite": "nodemon --exec run-s debug",
     "localTunnel": "lt --port 1998 --subdomain yash",
+    "sw": "run-s sw-create sw-move",
+    "sw-create": "sw-precache --config swConfig.js",
+    "sw-move": "node ./utils/swFileMover.js",
     "lt": "run-p start localTunnel",
     "lint-server": "esw --color",
     "lint-w": "esw --color --watch",
@@ -55,7 +58,8 @@
     "eslint-watch": "^4.0.2",
     "localtunnel": "^1.9.1",
     "nodemon": "^1.18.9",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sw-precache": "^5.2.1"
   },
   "engines": {
     "node": "10.12.0",
