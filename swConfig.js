@@ -42,6 +42,10 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
+    urlPattern: /\/dashboard/,
+    handler: 'networkFirst',
+  },
+  {
     urlPattern: /platform-lookaside\.fbsbx\.com/,
     handler: 'networkFirst',
   },
@@ -61,6 +65,5 @@ module.exports = {
     '/': ['views/layout.hbs', 'views/index.hbs', 'views/partials/validation.hbs'],
     '/auth/login': ['views/layout.hbs', 'views/login.hbs', 'views/partials/validation.hbs'],
     '/auth/register': ['views/layout.hbs', 'views/register.hbs', 'views/partials/validation.hbs'],
-    '/dashboard': ['views/layout.hbs', 'views/dashboard.hbs', 'views/partials/facebook.hbs', 'views/partials/github.hbs', 'views/partials/google.hbs', 'views/partials/linkedin.hbs', 'views/partials/pinterest.hbs', 'views/partials/twitter.hbs'],
   },
 };

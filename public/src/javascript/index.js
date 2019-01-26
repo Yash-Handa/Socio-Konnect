@@ -16,10 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
 		navigator.serviceWorker
-    .register('./service-worker.js')
-    .then(function() { console.log('Service Worker Registered'); })
-    .catch(function (err) {
-            console.log('ServiceWorker registration failed: ', err);
-    });
+    .register('./service-worker.js');
 });
 }
