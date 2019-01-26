@@ -34,11 +34,11 @@ module.exports = {
     handler: 'cacheFirst',
   },
   {
-    urlPattern: /lh6\.googleusercontent\.com/,
+    urlPattern: /\.googleusercontent\.com/,
     handler: 'networkFirst',
   },
   {
-    urlPattern: /media\.licdn\.com/,
+    urlPattern: /\.licdn\.com/,
     handler: 'networkFirst',
   },
   {
@@ -46,19 +46,19 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
-    urlPattern: /platform-lookaside\.fbsbx\.com/,
+    urlPattern: /\.fbsbx\.com/,
     handler: 'networkFirst',
   },
   {
-    urlPattern: /pbs\.twimg\.com/,
+    urlPattern: /\.twimg\.com/,
     handler: 'networkFirst',
   },
   {
-    urlPattern: /s\.pinimg\.com/,
+    urlPattern: /\.pinimg\.com/,
     handler: 'networkFirst',
   },
   {
-    urlPattern: /avatars0\.githubusercontent\.com/,
+    urlPattern: /\.githubusercontent\.com/,
     handler: 'networkFirst',
   }],
   dynamicUrlToDependencies: {

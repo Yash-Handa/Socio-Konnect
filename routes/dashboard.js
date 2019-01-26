@@ -1,6 +1,7 @@
 const express = require('express');
 
 const authChecker = require('../middlewares/auth/auth');
+const senders = require('../middlewares/sender');
 
 const router = express.Router();
 router.use(authChecker);
@@ -29,13 +30,15 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/send', (req, res) => {
-  setTimeout(() => {
-    res.status(200).json(req.body.map(data => ({
-      from: data.sendTo,
-      status: 'success',
-    })));
-  }, 2000);
+router.post('/send', senders, (req, res) => {
+  // setTimeout(() => {
+  //   res.status(200).json(req.body.map(data => ({
+  //     from: data.sendTo,
+  //     status: 'success',
+  //   })));
+  // }, 2000);
+
+  res.status(200).json(res.locals.msgStatus);
 });
 
 module.exports = router;

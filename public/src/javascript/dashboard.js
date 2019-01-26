@@ -207,7 +207,7 @@ if (sendFetch) {
       if (liFetch[i].children[1].innerText !== '') {
         dataToSend.push({
           sendTo: liFetch[i].children[0].innerText.toLowerCase().trim(),
-          data: liFetch[i].children[1].innerText,
+          data: liFetch[i].children[1].innerHTML.split('<br>'),
         });
       }
     }
