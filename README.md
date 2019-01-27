@@ -6,6 +6,8 @@
 ![dependencies](https://img.shields.io/david/Yash-Handa/Socio-Konnect.svg?style=flat-square)
 ![dev-dependencies](https://img.shields.io/david/dev/Yash-Handa/Socio-Konnect.svg?style=flat-square)
 
+![JWT](https://jwt.io/img/badge-compatible.svg)
+
 <div>
 <span align="left">
   <img alt="Tour" style="float: left" width="45%" title="Tour of the App" src="/readme content/tour.gif">

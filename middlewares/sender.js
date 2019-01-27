@@ -1,4 +1,5 @@
 const Twitter = require('twitter');
+const axios = require('axios');
 const debug = require('debug')('SocioKonnect:PostSender');
 
 const config = require('../bin/config/config');
@@ -67,8 +68,43 @@ module.exports = [
   function (req, res, next) {
     const linkedin = req.body.find(ele => ele.sendTo === 'linkedin');
     if (linkedin) {
-      debug(linkedin.data);
-      next();
+      const data = {
+        author: `urn:li:person:${req.user.linkedin.id}`,
+        lifecycleState: 'PUBLISHED',
+        specificContent: {
+          'com.linkedin.ugc.ShareContent': {
+            shareCommentary: {
+              text: linkedin.data.join('\n'),
+            },
+            shareMediaCategory: 'NONE',
+          },
+        },
+        visibility: {
+          'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC',
+        },
+      };
+      axios.post('https://api.linkedin.com/v2/ugcPosts', data, {
+        headers: {
+          'X-Restli-Protocol-Version': '2.0.0',
+          Authorization: `Bearer ${req.user.linkedin.accessToken}`,
+        },
+      })
+        .then((response) => {
+          res.locals.msgStatus.push({
+            from: 'linkedin',
+            status: 'success',
+          });
+          debug('linkedin: ', response);
+          next();
+        })
+        .catch(err => {
+          debug('linkedin: ', err);
+          res.locals.msgStatus.push({
+            from: 'linkedin',
+            status: 'error',
+          });
+          next();
+        });
     } else {
       next();
     }

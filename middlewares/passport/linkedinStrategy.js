@@ -23,7 +23,7 @@ module.exports = passport => {
       clientID: config.linkedinId,
       clientSecret: config.linkedinSecret,
       callbackURL: `${config.host}/auth/linkedin/callback`,
-      scope: ['r_emailaddress', 'r_basicprofile'],
+      scope: ['r_emailaddress', 'r_basicprofile', 'w_member_social'],
       state: true,
       passReqToCallback: true,
     },
