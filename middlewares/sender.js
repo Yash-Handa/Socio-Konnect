@@ -1,5 +1,6 @@
 const Twitter = require('twitter');
 const axios = require('axios');
+const FB = require('fb');
 const debug = require('debug')('SocioKonnect:PostSender');
 
 const config = require('../bin/config/config');
@@ -11,8 +12,25 @@ module.exports = [
 
     const facebook = req.body.find(ele => ele.sendTo === 'facebook');
     if (facebook) {
-      debug(facebook.data.join('\n'));
-      next();
+      FB.setAccessToken(req.user.facebook.accessToken);
+      const body = facebook.data.join('\n');
+      // `${req.user.facebook.id}/feed`
+      FB.api('me/feed', 'post', { message: body }, (response) => {
+        if (!response || response.error) {
+          debug(!response ? 'error occurred' : response.error);
+          res.locals.msgStatus.push({
+            from: 'facebook',
+            status: 'error',
+          });
+          next();
+        } else {
+          res.locals.msgStatus.push({
+            from: 'facebook',
+            status: 'success',
+          });
+          next();
+        }
+      });
     } else {
       next();
     }

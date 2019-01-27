@@ -3,7 +3,7 @@ const passport = require('passport');
 module.exports = router => {
   router.get('/facebook',
     passport.authenticate('facebook', {
-      scope: ['public_profile', 'email'], // 'user_link' for public profile and 'user_gender' for gender
+      scope: ['public_profile', 'email', 'user_link', 'user_posts', ' manage_pages', 'publish_pages'], // 'user_link' for public profile and 'user_gender' for gender
     }));
 
   router.get('/facebook/callback', (req, res, next) => {

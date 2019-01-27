@@ -8,6 +8,7 @@ function extras(data, token) {
   user.picture = data.picture.data.url;
   user.accessToken = token;
   user.id = data.id;
+  user.profile = data.link;
   return user;
 }
 
