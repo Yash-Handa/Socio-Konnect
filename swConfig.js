@@ -1,6 +1,7 @@
 const src = 'public/src';
 const materialize = 'node_modules/materialize-css/dist';
 const animate = 'node_modules/animate.css';
+const intro = 'node_modules/intro.js/minified';
 
 module.exports = {
   staticFileGlobs: [
@@ -12,6 +13,8 @@ module.exports = {
     `${src}/images/icons/**.*`,
     `${src}/javascript/**.js`,
     `${animate}/animate.min.css`,
+    `${intro}/introjs.min.css`,
+    `${intro}/intro.min.js`,
     `${materialize}/css/materialize.min.css`,
     `${materialize}/js/materialize.min.js`,
   ],

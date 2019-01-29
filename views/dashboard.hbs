@@ -2,6 +2,7 @@
   <meta name="csrf-token" content={{csrfToken}}>
   <link rel="stylesheet" href="/stylesheets/dashboard.css">
   <link rel="stylesheet" href="/stylesheets/defaultTab.css">
+  <link rel="stylesheet" href="/introjs.min.css">
 </head>
 
 <div class="animated fadeInDown" style="overflow: hidden">
@@ -10,7 +11,7 @@
   </div>
 
   <div class="navigator me" id="me">
-      <img src={{profilePicture}} alt="profile pic" width="125px" class="circle left pic z-depth-3 dropdown-trigger" data-target='dropdown1' style="display: inline-block" id="pic">
+      <img src={{profilePicture}} alt="profile pic" width="125px" class="circle left pic z-depth-3 dropdown-trigger" data-target='dropdown1' style="display: inline-block" id="pic" data-intro='For going to your Profile or LogOut Click your Pic ^_^' data-step="2" data-tooltipClass="intro" data-highlightClass="intro-of" data-disable-interaction="1">
     <div class="name" id="name"><a href='#' class="dropdown-trigger" data-target='dropdown1'>{{username}}</a></div>
   </div>
 </div>
@@ -24,11 +25,11 @@
   <div class="row select">
     <div class="col s12">
       <ul class="tabs" id="tabs">
-        <li class="tab col s2"><a class="facebook" href="#facebook"><i class="fab fa-facebook-f"></i></a></li>
+        <li class="tab col s4"><a class="facebook" href="#facebook"><i class="fab fa-facebook-f"></i></a></li>
         {{!-- <li class="tab col s2"><a href="#google" class="google"><i class="fab fa-google"></i></a></li> --}}
         {{!-- <li class="tab col s2"><a href="#github" class="github"><i class="fab fa-github"></i></a></li> --}}
-        <li class="tab col s2"><a href="#twitter" class="twitter"><i class="fab fa-twitter"></i></a></li>
-        <li class="tab col s2"><a href="#linkedin" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+        <li class="tab col s4"><a href="#twitter" class="twitter"><i class="fab fa-twitter"></i></a></li>
+        <li class="tab col s4"><a href="#linkedin" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
         {{!-- <li class="tab col s2"><a href="#pinterest" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li> --}}
       </ul>
     </div>
@@ -44,7 +45,7 @@
   </div>
 </div>
 
-<a class="btn-floating btn-large waves-effect waves-light modal-trigger animated rotateInDownRight delay-1s" href="#generalMsg" id="message"><i class="fas fa-pen-nib fa-2x" data-fa-transform="down-4"></i></a>
+<a class="btn-floating btn-large waves-effect waves-light modal-trigger animated rotateInDownRight delay-1s" href="#generalMsg" id="message" data-intro='Click This button for creating a General Message which can be Editted later :)' data-step="1" data-tooltipClass="intro" data-highlightClass="intro-of" data-disable-interaction="1"><i class="fas fa-pen-nib fa-2x" data-fa-transform="down-4"></i></a>
 
 <!-- Modal Structure -->
 <div id="generalMsg" class="modal modal-fixed-footer">
@@ -67,7 +68,7 @@
   </div>
 </div>
 
-<a class="btn-floating btn-large waves-effect waves-light modal-trigger animated rotateInDownLeft delay-1s" href="#sender-confirm" id="sender"><i class="fas fa-share fa-2x" data-fa-transform="down-3"></i></a>
+<a class="btn-floating btn-large waves-effect waves-light modal-trigger animated rotateInDownLeft delay-1s" href="#sender-confirm" id="sender" data-intro='Click this button for Seeing a the Messages which will be send :)' data-step="3" data-tooltipClass="intro" data-highlightClass="intro-of" data-disable-interaction="1"><i class="fas fa-share fa-2x" data-fa-transform="down-3"></i></a>
 
 <!-- Modal Structure -->
 <div id="sender-confirm" class="modal modal-fixed-footer">
@@ -200,6 +201,7 @@
     </div>
   </div> --}}
 
+<script src="/intro.min.js"></script>
 <script src="/javascript/dashboard.js"></script>
 
 <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>

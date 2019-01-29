@@ -291,6 +291,62 @@ textarea:not(.browser-default):focus:not([readonly]) + label {
   overflow: hidden;
 }
 
+.intro {
+  width: 50vw;
+  max-width: 500px !important;
+  /* padding: 50px 20px !important; */
+  max-height: 400px !important;
+  box-sizing: border-box !important;
+  height: 40vh;
+  /* background-color: #dbcee9ee !important; */
+}
+
+.introjs-tooltiptext {
+  padding: 8% 10% !important;
+  line-height: 1.4;
+}
+
+.introjs-progress {
+  margin: 0 5% !important;
+}
+
+.introjs-tooltipbuttons {
+  height: 56px;
+  position: absolute;
+  /* line-height: 56px; */
+  bottom: 0;
+  right: 0;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  width: 100%;
+  padding: 0 8%;
+}
+
+.introjs-button {
+  border: none !important;
+  margin: 10px 2px !important;
+  height: 25px;
+  line-height: 25px !important;
+  color: #472C66 !important;
+  background-color: rgba(214, 195, 235, 0.884) !important;
+  transition: .3s;
+  box-shadow: 0px 3px 4px #000000a1;
+  background-image: none !important;
+  background-clip: initial !important;
+  text-shadow: none !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.introjs-button:hover {
+  box-shadow: none;
+  background-color: #472C66 !important;
+  color: white !important
+}
+
+.introjs-skipbutton {
+  float: left;
+}
+
 @media (max-width: 992px) {
   .navigator {
     padding: 0 30px 0 0;
@@ -347,6 +403,11 @@ textarea:not(.browser-default):focus:not([readonly]) + label {
     width: 100px !important;
     height: 100px !important;
   }
+  .intro {
+    width: 80vw;
+    max-width: 80vw !important;
+    /* padding: 0px 20px !important; */
+  }
 }
 
 @media (max-height: 450px) and (max-width: 601px) {
@@ -365,6 +426,14 @@ textarea:not(.browser-default):focus:not([readonly]) + label {
     height: 50px;
     line-height: 50px;
     font-size: 12px;
+  }
+  .intro {
+    width: 80vw;
+    max-width: 80vw !important;
+    /* padding: 25px 10px !important; */
+    max-height: 70vh !important;
+    box-sizing: border-box !important;
+    height: 70vh;
   }
 }
 

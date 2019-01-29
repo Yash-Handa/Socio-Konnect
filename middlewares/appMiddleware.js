@@ -46,6 +46,7 @@ function setup(app, connectDB) {
   app.use(express.static(path.join(__dirname, '../public/src')));
   app.use(express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
   app.use(express.static(path.join(__dirname, '../node_modules/animate.css')));
+  app.use(express.static(path.join(__dirname, '../node_modules/intro.js/minified')));
   app.use(cookieParser());
 
   // added express-session for persistent logins
