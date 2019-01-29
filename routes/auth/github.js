@@ -10,16 +10,16 @@ module.exports = router => {
       if (!user) {
         req.flash('error_msg', info.message);
         // for authorizing call (user already exist and login)
-        if (req.isAuthenticated()) return res.redirect('/dashboard#github');
+        if (req.isAuthenticated()) return res.redirect('/dashboard');
         return res.redirect('/auth/login');
       }
 
       // for authorizing call (user already exist and login)
-      if (req.isAuthenticated()) return res.redirect('/dashboard#github');
+      if (req.isAuthenticated()) return res.redirect('/dashboard');
 
       req.logIn(user, error => {
         if (error) { return next(err); }
-        return res.redirect('/dashboard#github');
+        return res.redirect('/dashboard');
       });
     })(req, res, next);
   });
