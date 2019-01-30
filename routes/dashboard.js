@@ -43,7 +43,7 @@ router.post('/send', senders, (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  res.status(200).render('Profile', {
+  res.status(200).render('profile', {
     title: 'Profile',
     csrfToken: req.csrfToken(),
   });
