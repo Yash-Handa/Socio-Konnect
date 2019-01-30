@@ -30,7 +30,7 @@ module.exports = passport => {
         User.findOne({ email: req.user.email }).exec()
           .then(user => {
             // eslint-disable-next-line no-underscore-dangle
-            user.set({ facebook: extras(profile._json, accessToken) });
+            user.set({ facebook: extras(profile._json, accessToken), firstTime: false });
             user.save((err, updatedUser) => {
               if (err) {
                 return done(null, false, {
@@ -68,7 +68,22 @@ module.exports = passport => {
                 done(null, savedUser);
               });
             } else if (user.facebook) {
-              if (user.facebook.id === profile.id) return done(null, user);
+              if (user.facebook.id === profile.id) {
+                if (user.firstTime) {
+                  user.set({ firstTime: false });
+                  user.save((err) => {
+                    if (err) {
+                      return done(null, false, {
+                        message: 'Unexpected Error Occurred',
+                      });
+                    }
+                    // send user rather than updatedUser so that first time can be accessed
+                    return done(null, user);
+                  });
+                } else {
+                  return done(null, user);
+                }
+              }
             } else {
               // when email is present but not registered with facebook
               return done(null, false, {

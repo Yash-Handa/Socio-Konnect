@@ -31,7 +31,7 @@ module.exports = passport => {
       User.findOne({ email: req.user.email }).exec()
         .then(user => {
           // eslint-disable-next-line no-underscore-dangle
-          user.set({ google: extras(profile._json, accessToken) });
+          user.set({ google: extras(profile._json, accessToken), firstTime: false });
           user.save((err, updatedUser) => {
             if (err) {
               return done(null, false, {
@@ -75,9 +75,25 @@ module.exports = passport => {
               if (err) return done(err);
               done(null, savedUser);
             });
-          } else if (user.google.id === profile.id) return done(null, user);
-          else {
-            // when email is present but not registered with facebook
+          } else if (user.google) {
+            if (user.google.id === profile.id) {
+              if (user.firstTime) {
+                user.set({ firstTime: false });
+                user.save((err) => {
+                  if (err) {
+                    return done(null, false, {
+                      message: 'Unexpected Error Occurred',
+                    });
+                  }
+                  // send user rather than updatedUser so that first time can be accessed
+                  return done(null, user);
+                });
+              } else {
+                return done(null, user);
+              }
+            }
+          } else {
+            // when email is present but not registered with google
             return done(null, false, {
               message: `The email is registered with, ${user.provider.toUpperCase()} sign in`,
             });

@@ -29,7 +29,22 @@ module.exports = function (passport) {
             // return user
             if (isMatch) {
               // check if email is confirmed or not
-              if (user.confirmed) return done(null, user);
+              if (user.confirmed) {
+                if (user.firstTime) {
+                  user.set({ firstTime: false });
+                  user.save((error) => {
+                    if (error) {
+                      return done(null, false, {
+                        message: 'Unexpected Error Occurred',
+                      });
+                    }
+                    // send user rather than updatedUser so that first time can be accessed
+                    return done(null, user);
+                  });
+                } else {
+                  return done(null, user);
+                }
+              }
 
               const createdDate = user.date.getTime();
               const now = Date.now();

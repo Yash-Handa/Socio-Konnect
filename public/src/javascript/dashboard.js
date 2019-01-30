@@ -24,21 +24,25 @@ function confirmor(name, li) {
   }
 }
 
-const intro = introJs();
+const introControl = document.getElementById('into-controller');
+if (introControl) {
+  document.getElementById('message').classList.remove('animated');
+  document.getElementById('sender').classList.remove('animated');
+  const intro = introJs();
+  intro.setOptions({
+    showStepNumbers:false,
+    showBullets: false,
+    showProgress: true,
+    hidePrev: true,
+    hideNext: true,
+    nextLabel: 'Next >',
+    prevLabel: '< Back',
+  });
 
-intro.setOptions({
-  showStepNumbers:false,
-  showBullets: false,
-  showProgress: true,
-  hidePrev: true,
-  hideNext: true,
-  nextLabel: 'Next >',
-  prevLabel: '< Back',
-});
-
-setTimeout(() => {
-  intro.start();
-}, 2000);
+  setTimeout(() => {
+    intro.start();
+  }, 250);
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   const box = document.querySelectorAll('.modal');

@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+html, body {
+  background-color: #142834;
+  font-family: "Roboto";
+  height: auto;
+}
+
+.main-cover {
+  /* The image used */
+  background-image: url("/images/background.jpg");
+
+  /* Full height */
+  height: 100vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
+}
+
+.navigator {
+  height: 75px;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.me {
+  background-color: #472C66;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+}
+
+.logo {
+  margin: auto;
+  text-align: center;
+  line-height: 75px;
+  height: 75px;
+  font-size: 2.1rem;
+  color: white;
+  /* margin-left: 25%; */
+}

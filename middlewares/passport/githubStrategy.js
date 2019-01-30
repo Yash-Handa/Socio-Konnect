@@ -36,7 +36,7 @@ module.exports = passport => {
         User.findOne({ email: req.user.email }).exec()
           .then(user => {
             // eslint-disable-next-line no-underscore-dangle
-            user.set({ github: extras(profile._json, accessToken) });
+            user.set({ github: extras(profile._json, accessToken), firstTime: false });
             user.save((err, updatedUser) => {
               if (err) {
                 return done(null, false, {
@@ -75,7 +75,22 @@ module.exports = passport => {
               });
             } else if (user.github) {
               // eslint-disable-next-line eqeqeq
-              if (user.github.id == profile.id) return done(null, user);
+              if (user.github.id == profile.id) {
+                if (user.firstTime) {
+                  user.set({ firstTime: false });
+                  user.save((err) => {
+                    if (err) {
+                      return done(null, false, {
+                        message: 'Unexpected Error Occurred',
+                      });
+                    }
+                    // send user rather than updatedUser so that first time can be accessed
+                    return done(null, user);
+                  });
+                } else {
+                  return done(null, user);
+                }
+              }
             } else {
               // when email is present but not registered with github
               return done(null, false, {

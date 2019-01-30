@@ -25,6 +25,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  firstTime: {
+    type: Boolean,
+    default: true,
+  },
 
   // for providing multi-platform combination
   google: {},

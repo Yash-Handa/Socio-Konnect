@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
     error: res.locals.error,
     username: req.user.username,
     email: req.user.email,
+    firstTime: req.user.twitter ? false : req.user.firstTime,
     provider: req.user.provider,
     profilePicture: picture,
     facebook: req.user.facebook,
@@ -39,6 +40,17 @@ router.post('/send', senders, (req, res) => {
   // }, 2000);
 
   res.status(200).json(res.locals.msgStatus);
+});
+
+router.get('/profile', (req, res) => {
+  res.status(200).render('Profile', {
+    title: 'Profile',
+    csrfToken: req.csrfToken(),
+  });
+});
+
+router.post('/profile', (req, res) => {
+  res.send('Hello');
 });
 
 module.exports = router;

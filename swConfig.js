@@ -1,7 +1,6 @@
 const src = 'public/src';
 const materialize = 'node_modules/materialize-css/dist';
 const animate = 'node_modules/animate.css';
-const intro = 'node_modules/intro.js/minified';
 
 module.exports = {
   staticFileGlobs: [
@@ -13,8 +12,6 @@ module.exports = {
     `${src}/images/icons/**.*`,
     `${src}/javascript/**.js`,
     `${animate}/animate.min.css`,
-    `${intro}/introjs.min.css`,
-    `${intro}/intro.min.js`,
     `${materialize}/css/materialize.min.css`,
     `${materialize}/js/materialize.min.js`,
   ],
@@ -49,6 +46,14 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
+    urlPattern: /\/auth/,
+    handler: 'networkFirst',
+  },
+  {
+    urlPattern: /\//,
+    handler: 'networkFirst',
+  },
+  {
     urlPattern: /\.fbsbx\.com/,
     handler: 'networkFirst',
   },
@@ -64,9 +69,4 @@ module.exports = {
     urlPattern: /\.githubusercontent\.com/,
     handler: 'networkFirst',
   }],
-  dynamicUrlToDependencies: {
-    '/': ['views/layout.hbs', 'views/index.hbs', 'views/partials/validation.hbs'],
-    '/auth/login': ['views/layout.hbs', 'views/login.hbs', 'views/partials/validation.hbs'],
-    '/auth/register': ['views/layout.hbs', 'views/register.hbs', 'views/partials/validation.hbs'],
-  },
 };

@@ -36,7 +36,7 @@ module.exports = passport => {
         User.findOne({ email: req.user.email }).exec()
           .then(user => {
             // eslint-disable-next-line no-underscore-dangle
-            user.set({ linkedin: extras(profile._json, accessToken) });
+            user.set({ linkedin: extras(profile._json, accessToken), firstTime: false });
             user.save((err, updatedUser) => {
               if (err) {
                 return done(null, false, {
@@ -75,7 +75,22 @@ module.exports = passport => {
               });
             } else if (user.linkedin) {
               // eslint-disable-next-line eqeqeq
-              if (user.linkedin.id == profile.id) return done(null, user);
+              if (user.linkedin.id == profile.id) {
+                if (user.firstTime) {
+                  user.set({ firstTime: false });
+                  user.save((err) => {
+                    if (err) {
+                      return done(null, false, {
+                        message: 'Unexpected Error Occurred',
+                      });
+                    }
+                    // send user rather than updatedUser so that first time can be accessed
+                    return done(null, user);
+                  });
+                } else {
+                  return done(null, user);
+                }
+              }
             } else {
               // when email is present but not registered with linkedin
               return done(null, false, {
