@@ -29,6 +29,9 @@ const userSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  profilePic: {
+    type: String,
+  },
 
   // for providing multi-platform combination
   google: {},

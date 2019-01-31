@@ -42,3 +42,50 @@ html, body {
   color: white;
   /* margin-left: 25%; */
 }
+
+.dashboard {
+  margin-top: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  min-height: calc(100vh - 85px);
+  background-color: rgb(194, 167, 224);
+  padding: 30px 15px;
+}
+
+.custom {
+  background-color: #E8EAEB;
+  border-radius: 14px;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.custom > .row {
+  margin-bottom: 0 !important;
+}
+
+.changer {
+  margin-top: 80px;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #472C66;
+  -webkit-box-shadow: 0 1px 0 0 #472C66;
+  box-shadow: 0 1px 0 0 #472C66;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]) + label {
+   color: #472C66;
+}
+
+.input-field > label {
+  color: #74428D !important;
+}
+
+input[type=text]:not(.browser-default) {
+  border-bottom: 1px solid #74428D;
+}
+
+@media (max-width: 601px) {
+  custom > .row {
+    margin-bottom: 20px !important;
+  }
+}

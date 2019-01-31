@@ -1,3 +1,5 @@
+const config = require('./bin/config/config');
+
 const src = 'public/src';
 const materialize = 'node_modules/materialize-css/dist';
 const animate = 'node_modules/animate.css';
@@ -50,7 +52,7 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
-    urlPattern: /\//,
+    urlPattern: `${config.host}/`,
     handler: 'networkFirst',
   },
   {

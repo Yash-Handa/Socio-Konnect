@@ -26,18 +26,18 @@ app.set('port', port);
 
 let server;
 
-if (config.env === 'development') {
-  server = https.createServer({
-    key: fs.readFileSync(path.resolve(__dirname, '../key.pem')),
-    cert: fs.readFileSync(path.resolve(__dirname, '../cert.pem')),
-    passphrase: config.passphrase,
-  }, app);
-} else {
-  server = http.createServer(app);
-}
+// if (config.env === 'development') {
+//   server = https.createServer({
+//     key: fs.readFileSync(path.resolve(__dirname, '../key.pem')),
+//     cert: fs.readFileSync(path.resolve(__dirname, '../cert.pem')),
+//     passphrase: config.passphrase,
+//   }, app);
+// } else {
+//   server = http.createServer(app);
+// }
 
 // for bringing localhost back to HTTP
-// server = http.createServer(app);
+server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -1,4 +1,5 @@
 <head>
+  <meta name="csrf-token" content={{csrfToken}}>
   <link rel="stylesheet" href="/stylesheets/profile.css">
 </head>
 
@@ -7,3 +8,80 @@
     <div class="logo">{{title}}</div>
   </div>
 </div>
+
+<div class="dashboard z-depth-3 animated fadeInUp">
+  <div class="col s12 m8 l6 center-align container">
+    <div class="card-panel z-depth-1 custom">
+      <div class="row">
+        <div class="col s12 m4 l3">
+          <img src={{profilePicture}} alt="profile pic" width="125px" class="circle materialboxed center-align" style="display: inline-block">
+          <!-- notice the "circle" class -->
+        </div>
+        <div class="col s12 m8 l9">
+          <span class="black-text">
+            <h5>Welcome <span id="username">{{username}}</span></h5>
+            <p><strong>{{email}}</strong></p>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="/auth/logout" class="waves-effect waves-light btn left"><i class="fas fa-sign-out-alt fa-fw"
+        data-fa-transform="shrink-1 left-3"></i>Logout</a>
+
+    <!-- Modal Trigger -->
+    <a href="#removeWarning" class="waves-effect waves-light red darken-3 btn right modal-trigger"><i class="far fa-times-circle fa-fw"
+        data-fa-transform="shrink-1 left-3"></i>Remove</a>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="removeWarning" class="modal">
+    <div class="modal-content">
+      <h4>Confirmation</h4>
+      <p><strong>Are you sure you want to remove your account :(</strong></p>
+      <p><strong>User Name: </strong>{{username}}</p>
+      <p><strong>Email:</strong> {{email}}</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="/auth/remove" class="modal-close waves-effect waves-light red darken-3 btn right modal-trigger"><i class="far fa-times-circle fa-fw"
+          data-fa-transform="shrink-1 left-3"></i>Remove</a>
+    </div>
+  </div>
+
+  <div class="changer container">
+    <div class="row">
+      <div class="input-field col s12 comp">
+        <input id="usernameChange" type="text" name="username" class="validate" required>
+        <label for="usernameChange">New User Name</label>
+      </div>
+    </div>
+
+    <div class="carousel" style="margin-top: -20px">
+      <h6 style="margin-top: 30px">Choose a profile pic:</h6>
+      {{#if googlePic}}
+        <a class="carousel-item" href="#one!"><img width="150px" src={{googlePic.picture}}></a>
+      {{/if}}
+      {{#if twitterPic}}
+        <a class="carousel-item" href="#two!"><img width="150px" src={{twitterPic.picture}}></a>
+      {{/if}}
+      {{#if linkedinPic}}
+        <a class="carousel-item" href="#three!"><img  width="150px" src={{linkedinPic.picture}}></a>
+      {{/if}}
+      {{#if githubPic}}
+        <a class="carousel-item" href="#four!"><img  width="150px" src={{githubPic.picture}}></a>
+      {{/if}}
+      {{#if facebookPic}}
+        <a class="carousel-item" href="#five!"><img  width="150px" src={{facebookPic.picture}}></a>
+      {{/if}}
+      <a class="carousel-item" href="#six!"><img width="150px" src="/images/placeholder.png"></a>
+    </div>
+  </div>
+
+</div>
+
+<script src="/javascript/profile.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
+  crossorigin="anonymous"></script>

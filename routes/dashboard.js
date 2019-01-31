@@ -20,8 +20,7 @@ router.get('/', (req, res) => {
     username: req.user.username,
     email: req.user.email,
     firstTime: req.user.twitter ? false : req.user.firstTime,
-    provider: req.user.provider,
-    profilePicture: picture,
+    profilePicture: req.user.profilePic || picture,
     facebook: req.user.facebook,
     google: req.user.google,
     github: req.user.github,
@@ -43,9 +42,23 @@ router.post('/send', senders, (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
+  const { provider } = req.user;
+  let picture = '';
+  if (provider === 'local') picture = '/images/placeholder.png';
+  // eslint-disable-next-line prefer-destructuring
+  else picture = req.user[provider].picture;
   res.status(200).render('profile', {
     title: 'Profile',
     csrfToken: req.csrfToken(),
+    username: req.user.username,
+    email: req.user.email,
+    firstTime: req.user.twitter ? false : req.user.firstTime,
+    profilePicture: req.user.profilePic || picture,
+    twitterPic: req.user.twitter,
+    linkedinPic: req.user.linkedin,
+    googlePic: req.user.google,
+    githubPic: req.user.github,
+    facebookPic: req.user.facebook,
   });
 });
 
