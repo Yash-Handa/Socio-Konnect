@@ -294,7 +294,7 @@ toolbox.router.get(/\/dashboard/, toolbox.networkFirst, {});
 toolbox.router.get(/\/auth/, toolbox.networkFirst, {});
 toolbox.router.get("https://localhost:1998/", toolbox.networkFirst, {});
 toolbox.router.get("http://localhost:1998/", toolbox.networkFirst, {});
-toolbox.router.get("https://socio-konnect.herokuapp.com/", toolbox.networkFirst, {});
+toolbox.router.get(/socio-konnect\.herokuapp\.com/, toolbox.networkFirst, {});
 toolbox.router.get(/\.fbsbx\.com/, toolbox.networkFirst, {});
 toolbox.router.get(/\.twimg\.com/, toolbox.networkFirst, {});
 toolbox.router.get(/\.pinimg\.com/, toolbox.networkFirst, {});
