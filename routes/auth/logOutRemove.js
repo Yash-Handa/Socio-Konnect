@@ -5,7 +5,7 @@ module.exports = router => {
   router.get('/logout', authChecker, (req, res) => {
     req.logOut();
     req.flash('success_msg', 'You are logged out');
-    res.status(301).redirect('/');
+    res.status(301).redirect('/auth/login');
   });
 
   router.get('/remove', authChecker, (req, res, next) => {
@@ -14,7 +14,7 @@ module.exports = router => {
         user.remove();
         req.flash('success_msg', `${user.email} has been Deleted`);
         req.logOut();
-        res.status(301).redirect('/');
+        res.status(301).redirect('/auth/register');
       })
       .catch(err => next(err));
   });

@@ -5,7 +5,7 @@ const User = require('../../DB/schema');
 
 function extras(data, token, tokenSecret) {
   const user = {};
-  user.picture = data.profile_image_url_https;
+  user.picture = data.profile_image_url_https.replace('_normal', '');
   user.token = token;
   user.tokenSecret = tokenSecret;
   user.id = data.id;

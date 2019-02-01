@@ -36,24 +36,6 @@ module.exports = [
     }
   },
   function (req, res, next) {
-    const google = req.body.find(ele => ele.sendTo === 'google');
-    if (google) {
-      debug(google.data);
-      next();
-    } else {
-      next();
-    }
-  },
-  function (req, res, next) {
-    const github = req.body.find(ele => ele.sendTo === 'github');
-    if (github) {
-      debug(github.data);
-      next();
-    } else {
-      next();
-    }
-  },
-  function (req, res, next) {
     const twitter = req.body.find(ele => ele.sendTo === 'twitter');
     if (twitter) {
       const client = new Twitter({
@@ -107,12 +89,11 @@ module.exports = [
           Authorization: `Bearer ${req.user.linkedin.accessToken}`,
         },
       })
-        .then((response) => {
+        .then(() => {
           res.locals.msgStatus.push({
             from: 'linkedin',
             status: 'success',
           });
-          debug('linkedin: ', response);
           next();
         })
         .catch(err => {
@@ -123,15 +104,6 @@ module.exports = [
           });
           next();
         });
-    } else {
-      next();
-    }
-  },
-  function (req, res, next) {
-    const pinterest = req.body.find(ele => ele.sendTo === 'pinterest');
-    if (pinterest) {
-      debug(pinterest.data);
-      next();
     } else {
       next();
     }
