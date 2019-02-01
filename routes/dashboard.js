@@ -9,7 +9,6 @@ router.use(authChecker);
 
 router.get('/', (req, res) => {
   const { provider } = req.user;
-  console.log(res.locals.introAgain);
   let picture = '';
   if (provider === 'local') picture = '/images/placeholder.png';
   // eslint-disable-next-line prefer-destructuring

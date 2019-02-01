@@ -273,29 +273,21 @@ img {
   vertical-align: middle;
 }
 
-.social-btns .btn.google {
+.social-btns .btn.facebook {
   animation-delay: 800ms;
 }
 
-.social-btns .btn.facebook {
+.social-btns .btn.linkedin {
   animation-delay: 1000ms;
 }
 
-.social-btns .btn.github {
-  animation-delay: 1200ms;
-}
-
-.social-btns .btn.linkedin {
-  animation-delay: 1400ms;
-}
-
 .social-btns .btn.twitter {
-  animation-delay: 1600ms;
+  animation-delay: 1200ms;
 }
 
 .collapsible {
   box-shadow: none;
-  webkit-box-shadow: none;
+  -webkit-box-shadow: none;
   border: none;
 }
 
