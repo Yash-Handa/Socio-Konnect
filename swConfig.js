@@ -63,7 +63,7 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
-    urlPattern: 'https://socio-konnect.herokuapp.com/',
+    urlPattern: /socio-konnect\.herokuapp\.com/,
     handler: 'networkFirst',
   },
   {
