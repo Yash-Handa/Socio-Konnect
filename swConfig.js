@@ -1,5 +1,3 @@
-const config = require('./bin/config/config');
-
 const src = 'public/src';
 const materialize = 'node_modules/materialize-css/dist';
 const animate = 'node_modules/animate.css';
@@ -57,7 +55,15 @@ module.exports = {
     handler: 'networkFirst',
   },
   {
-    urlPattern: `${config.host}/`,
+    urlPattern: 'https://localhost:1998/',
+    handler: 'networkFirst',
+  },
+  {
+    urlPattern: 'http://localhost:1998/',
+    handler: 'networkFirst',
+  },
+  {
+    urlPattern: 'https://socio-konnect.herokuapp.com/',
     handler: 'networkFirst',
   },
   {
