@@ -2,12 +2,14 @@ const express = require('express');
 
 const authChecker = require('../middlewares/auth/auth');
 const senders = require('../middlewares/sender');
+const profileUpdate = require('../middlewares/profileUpdate');
 
 const router = express.Router();
 router.use(authChecker);
 
 router.get('/', (req, res) => {
   const { provider } = req.user;
+  console.log(res.locals.introAgain);
   let picture = '';
   if (provider === 'local') picture = '/images/placeholder.png';
   // eslint-disable-next-line prefer-destructuring
@@ -19,7 +21,7 @@ router.get('/', (req, res) => {
     error: res.locals.error,
     username: req.user.username,
     email: req.user.email,
-    firstTime: req.user.twitter ? false : req.user.firstTime,
+    firstTime: (res.locals.introAgain) || (req.user.twitter ? false : req.user.firstTime),
     profilePicture: req.user.profilePic || picture,
     facebook: req.user.facebook,
     google: req.user.google,
@@ -52,7 +54,7 @@ router.get('/profile', (req, res) => {
     csrfToken: req.csrfToken(),
     username: req.user.username,
     email: req.user.email,
-    firstTime: req.user.twitter ? false : req.user.firstTime,
+    firstTime: (res.locals.introAgain) || (req.user.twitter ? false : req.user.firstTime),
     profilePicture: req.user.profilePic || picture,
     twitterPic: req.user.twitter,
     linkedinPic: req.user.linkedin,
@@ -62,8 +64,8 @@ router.get('/profile', (req, res) => {
   });
 });
 
-router.post('/profile', (req, res) => {
-  res.send('Hello');
+router.post('/profile', profileUpdate, (req, res) => {
+  res.status(201).send('Done');
 });
 
 module.exports = router;

@@ -14,7 +14,7 @@
     <div class="card-panel z-depth-1 custom">
       <div class="row">
         <div class="col s12 m4 l3">
-          <img src={{profilePicture}} alt="profile pic" width="125px" class="circle materialboxed center-align" style="display: inline-block">
+          <img src={{profilePicture}} alt="profile pic" width="125px" class="circle materialboxed center-align" style="display: inline-block" id="profilePic">
           <!-- notice the "circle" class -->
         </div>
         <div class="col s12 m8 l9">
@@ -60,26 +60,43 @@
     </div>
 
     <div class="carousel" style="margin-top: -20px">
-      <h6 style="margin-top: 30px">Choose a profile pic:</h6>
+      <h6 class="picText">Choose a profile pic:</h6>
       {{#if googlePic}}
         <a class="carousel-item" href="#one!"><img width="150px" src={{googlePic.picture}}></a>
       {{/if}}
-      {{#if twitterPic}}
-        <a class="carousel-item" href="#two!"><img width="150px" src={{twitterPic.picture}}></a>
-      {{/if}}
-      {{#if linkedinPic}}
-        <a class="carousel-item" href="#three!"><img  width="150px" src={{linkedinPic.picture}}></a>
-      {{/if}}
       {{#if githubPic}}
-        <a class="carousel-item" href="#four!"><img  width="150px" src={{githubPic.picture}}></a>
+        <a class="carousel-item" href="#two!"><img  width="150px" src={{githubPic.picture}}></a>
       {{/if}}
       {{#if facebookPic}}
-        <a class="carousel-item" href="#five!"><img  width="150px" src={{facebookPic.picture}}></a>
+        <a class="carousel-item" href="#three!"><img  width="150px" src={{facebookPic.picture}}></a>
+      {{/if}}
+      {{#if twitterPic}}
+        <a class="carousel-item" href="#four!"><img width="150px" src={{twitterPic.picture}}></a>
+      {{/if}}
+      {{#if linkedinPic}}
+        <a class="carousel-item" href="#five!"><img  width="150px" src={{linkedinPic.picture}}></a>
       {{/if}}
       <a class="carousel-item" href="#six!"><img width="150px" src="/images/placeholder.png"></a>
     </div>
-  </div>
 
+    <div class="switch">
+      <p class="left">Play Introduction</p>
+      <label class="right">
+        Off
+        <input type="checkbox" name="play-intro" id="play-intro">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+
+    <div>
+      <a href="/dashboard" class="waves-effect waves-light btn left"><i class="fas fa-undo fa-fw"
+          data-fa-transform="shrink-1 left-3"></i>Dashboard</a>
+
+      <a href="/dashboard" class="waves-effect waves-light blue darken-3 btn right" id="save"><i class="far fa-save fa-fw"
+          data-fa-transform="shrink-1 left-3"></i>Save</a>
+    </div>
+  </div>
 </div>
 
 <script src="/javascript/profile.js"></script>

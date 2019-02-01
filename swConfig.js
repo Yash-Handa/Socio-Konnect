@@ -3,6 +3,7 @@ const config = require('./bin/config/config');
 const src = 'public/src';
 const materialize = 'node_modules/materialize-css/dist';
 const animate = 'node_modules/animate.css';
+const intro = 'node_modules/intro.js/minified';
 
 module.exports = {
   staticFileGlobs: [
@@ -14,6 +15,9 @@ module.exports = {
     `${src}/images/icons/**.*`,
     `${src}/javascript/**.js`,
     `${animate}/animate.min.css`,
+    `${intro}/intro.min.js`,
+    `${intro}/intro.min.js`,
+    `${intro}/introjs.min.css`,
     `${materialize}/css/materialize.min.css`,
     `${materialize}/js/materialize.min.js`,
   ],
@@ -22,6 +26,7 @@ module.exports = {
     'public/src/': '/',
     'node_modules/materialize-css/dist/': '/',
     'node_modules/animate.css/': '/',
+    'node_modules/intro.js/minified/': '/',
   },
   runtimeCaching: [{
     urlPattern: /fonts\.googleapis\.com/,

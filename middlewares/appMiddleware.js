@@ -73,6 +73,7 @@ function setup(app, connectDB) {
   app.use((req, res, next) => {
     res.locals.email = req.flash('email')[0] || res.locals.email;
     res.locals.success_msg = req.flash('success_msg');
+    res.locals.introAgain = req.flash('introAgain');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     res.locals.jwt = req.flash('jwt')[0] || res.locals.jwt;
