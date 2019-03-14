@@ -35,7 +35,7 @@
     "express-session": "^1.15.6",
     "fb": "^2.0.0",
     "hbs": "~4.0.2",
-    "helmet": "^3.15.0",
+    "helmet": "^3.16.0",
     "http-errors": "^1.7.2",
     "intro.js": "^2.9.3",
     "jsonwebtoken": "^8.4.0",
