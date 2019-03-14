@@ -1,5 +1,6 @@
 # Socio Konnect
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c0cb8be28a7d446aa0aa4f0a8837d5b6)](https://app.codacy.com/app/yashhanda7/Socio-Konnect?utm_source=github.com&utm_medium=referral&utm_content=Yash-Handa/Socio-Konnect&utm_campaign=Badge_Grade_Dashboard)
 [![Codeship Status for Yash-Handa/Socio-Konnect](https://app.codeship.com/projects/849adba0-f99d-0136-ae21-1a0cd865de7f/status?branch=master)](/projects/321418)
 ![code size](https://img.shields.io/github/languages/code-size/Yash-Handa/Socio-Konnect.svg?style=flat-square)
 ![licence](https://img.shields.io/github/license/Yash-Handa/Socio-Konnect.svg?style=flat-square)
