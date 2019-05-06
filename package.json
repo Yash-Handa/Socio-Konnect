@@ -18,7 +18,9 @@
     "lint-w": "esw --color --watch",
     "public": "cd public",
     "out": "cd..",
-    "lint-client": "run-s public lint-server out"
+    "lint-client": "run-s public lint-server out",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
@@ -53,7 +55,8 @@
     "passport-pinterest": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "serve-favicon": "^2.5.0",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
@@ -68,5 +71,6 @@
   "engines": {
     "node": "10.12.0",
     "npm": "6.5.0"
-  }
+  },
+  "snyk": true
 }
