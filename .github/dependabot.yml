@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "23:30"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: urijs
+    versions:
+    - 1.19.5
+  - dependency-name: hbs
+    versions:
+    - 4.1.1
