@@ -34,7 +34,7 @@
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "fb": "^2.0.0",
-    "hbs": "~4.0.2",
+    "hbs": "~4.0.4",
     "helmet": "^3.16.0",
     "http-errors": "^1.7.2",
     "intro.js": "^2.9.3",
